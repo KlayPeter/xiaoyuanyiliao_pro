@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Maven / Spring Boot
+target/
+logs/
+!/.mvn/wrapper/maven-wrapper.jar
+log/
+*.log
+
+# UniApp / HBuilderX
+unpackage/
+dist/
+node_modules/
+.hbuilderx/

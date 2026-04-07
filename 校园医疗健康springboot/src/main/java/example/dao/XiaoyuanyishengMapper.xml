@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.XiaoyuanyishengMapper">
+  <resultMap id="BaseResultMap" type="example.pojo.Xiaoyuanyisheng">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="schoolyishengname" jdbcType="VARCHAR" property="schoolyishengname" />
+    <result column="schoolyssex" jdbcType="VARCHAR" property="schoolyssex" />
+    <result column="schoolysage" jdbcType="VARCHAR" property="schoolysage" />
+    <result column="schoolysphone" jdbcType="VARCHAR" property="schoolysphone" />
+    <result column="schoolysavaator" jdbcType="VARCHAR" property="schoolysavaator" />
+    <result column="schoolysjianjie" jdbcType="VARCHAR" property="schoolysjianjie" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, username, password, schoolyishengname, schoolyssex, schoolysage, schoolysphone, 
+    schoolysavaator, schoolysjianjie
+  </sql>
+  <select id="selectByExample" parameterType="example.pojo.XiaoyuanyishengExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_xiaoyuanyisheng
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_xiaoyuanyisheng
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_xiaoyuanyisheng
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="example.pojo.XiaoyuanyishengExample">
+    delete from t_xiaoyuanyisheng
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="example.pojo.Xiaoyuanyisheng">
+    insert into t_xiaoyuanyisheng (id, username, password, 
+      schoolyishengname, schoolyssex, schoolysage, 
+      schoolysphone, schoolysavaator, schoolysjianjie
+      )
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{schoolyishengname,jdbcType=VARCHAR}, #{schoolyssex,jdbcType=VARCHAR}, #{schoolysage,jdbcType=VARCHAR}, 
+      #{schoolysphone,jdbcType=VARCHAR}, #{schoolysavaator,jdbcType=VARCHAR}, #{schoolysjianjie,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="example.pojo.Xiaoyuanyisheng">
+    insert into t_xiaoyuanyisheng
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="schoolyishengname != null">
+        schoolyishengname,
+      </if>
+      <if test="schoolyssex != null">
+        schoolyssex,
+      </if>
+      <if test="schoolysage != null">
+        schoolysage,
+      </if>
+      <if test="schoolysphone != null">
+        schoolysphone,
+      </if>
+      <if test="schoolysavaator != null">
+        schoolysavaator,
+      </if>
+      <if test="schoolysjianjie != null">
+        schoolysjianjie,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolyishengname != null">
+        #{schoolyishengname,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolyssex != null">
+        #{schoolyssex,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolysage != null">
+        #{schoolysage,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolysphone != null">
+        #{schoolysphone,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolysavaator != null">
+        #{schoolysavaator,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolysjianjie != null">
+        #{schoolysjianjie,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="example.pojo.XiaoyuanyishengExample" resultType="java.lang.Long">
+    select count(*) from t_xiaoyuanyisheng
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_xiaoyuanyisheng
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schoolyishengname != null">
+        schoolyishengname = #{record.schoolyishengname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schoolyssex != null">
+        schoolyssex = #{record.schoolyssex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schoolysage != null">
+        schoolysage = #{record.schoolysage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schoolysphone != null">
+        schoolysphone = #{record.schoolysphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schoolysavaator != null">
+        schoolysavaator = #{record.schoolysavaator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schoolysjianjie != null">
+        schoolysjianjie = #{record.schoolysjianjie,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_xiaoyuanyisheng
+    set id = #{record.id,jdbcType=INTEGER},
+      username = #{record.username,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      schoolyishengname = #{record.schoolyishengname,jdbcType=VARCHAR},
+      schoolyssex = #{record.schoolyssex,jdbcType=VARCHAR},
+      schoolysage = #{record.schoolysage,jdbcType=VARCHAR},
+      schoolysphone = #{record.schoolysphone,jdbcType=VARCHAR},
+      schoolysavaator = #{record.schoolysavaator,jdbcType=VARCHAR},
+      schoolysjianjie = #{record.schoolysjianjie,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="example.pojo.Xiaoyuanyisheng">
+    update t_xiaoyuanyisheng
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolyishengname != null">
+        schoolyishengname = #{schoolyishengname,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolyssex != null">
+        schoolyssex = #{schoolyssex,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolysage != null">
+        schoolysage = #{schoolysage,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolysphone != null">
+        schoolysphone = #{schoolysphone,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolysavaator != null">
+        schoolysavaator = #{schoolysavaator,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolysjianjie != null">
+        schoolysjianjie = #{schoolysjianjie,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="example.pojo.Xiaoyuanyisheng">
+    update t_xiaoyuanyisheng
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      schoolyishengname = #{schoolyishengname,jdbcType=VARCHAR},
+      schoolyssex = #{schoolyssex,jdbcType=VARCHAR},
+      schoolysage = #{schoolysage,jdbcType=VARCHAR},
+      schoolysphone = #{schoolysphone,jdbcType=VARCHAR},
+      schoolysavaator = #{schoolysavaator,jdbcType=VARCHAR},
+      schoolysjianjie = #{schoolysjianjie,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.XyyiliaopaibanMapper">
+  <resultMap id="BaseResultMap" type="example.pojo.Xyyiliaopaiban">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="yuefen" jdbcType="VARCHAR" property="yuefen" />
+    <result column="xiaoyuanyisheng" jdbcType="VARCHAR" property="xiaoyuanyisheng" />
+    <result column="xiaoyuanyishengid" jdbcType="INTEGER" property="xiaoyuanyishengid" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="chuangjiantime" jdbcType="VARCHAR" property="chuangjiantime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, yuefen, xiaoyuanyisheng, xiaoyuanyishengid, remark, chuangjiantime
+  </sql>
+  <select id="selectByExample" parameterType="example.pojo.XyyiliaopaibanExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_xyyiliaopaiban
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_xyyiliaopaiban
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_xyyiliaopaiban
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="example.pojo.XyyiliaopaibanExample">
+    delete from t_xyyiliaopaiban
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="example.pojo.Xyyiliaopaiban">
+    insert into t_xyyiliaopaiban (id, yuefen, xiaoyuanyisheng, 
+      xiaoyuanyishengid, remark, chuangjiantime
+      )
+    values (#{id,jdbcType=INTEGER}, #{yuefen,jdbcType=VARCHAR}, #{xiaoyuanyisheng,jdbcType=VARCHAR}, 
+      #{xiaoyuanyishengid,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{chuangjiantime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="example.pojo.Xyyiliaopaiban">
+    insert into t_xyyiliaopaiban
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="yuefen != null">
+        yuefen,
+      </if>
+      <if test="xiaoyuanyisheng != null">
+        xiaoyuanyisheng,
+      </if>
+      <if test="xiaoyuanyishengid != null">
+        xiaoyuanyishengid,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="chuangjiantime != null">
+        chuangjiantime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="yuefen != null">
+        #{yuefen,jdbcType=VARCHAR},
+      </if>
+      <if test="xiaoyuanyisheng != null">
+        #{xiaoyuanyisheng,jdbcType=VARCHAR},
+      </if>
+      <if test="xiaoyuanyishengid != null">
+        #{xiaoyuanyishengid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="chuangjiantime != null">
+        #{chuangjiantime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="example.pojo.XyyiliaopaibanExample" resultType="java.lang.Long">
+    select count(*) from t_xyyiliaopaiban
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_xyyiliaopaiban
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.yuefen != null">
+        yuefen = #{record.yuefen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xiaoyuanyisheng != null">
+        xiaoyuanyisheng = #{record.xiaoyuanyisheng,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xiaoyuanyishengid != null">
+        xiaoyuanyishengid = #{record.xiaoyuanyishengid,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chuangjiantime != null">
+        chuangjiantime = #{record.chuangjiantime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_xyyiliaopaiban
+    set id = #{record.id,jdbcType=INTEGER},
+      yuefen = #{record.yuefen,jdbcType=VARCHAR},
+      xiaoyuanyisheng = #{record.xiaoyuanyisheng,jdbcType=VARCHAR},
+      xiaoyuanyishengid = #{record.xiaoyuanyishengid,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      chuangjiantime = #{record.chuangjiantime,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="example.pojo.Xyyiliaopaiban">
+    update t_xyyiliaopaiban
+    <set>
+      <if test="yuefen != null">
+        yuefen = #{yuefen,jdbcType=VARCHAR},
+      </if>
+      <if test="xiaoyuanyisheng != null">
+        xiaoyuanyisheng = #{xiaoyuanyisheng,jdbcType=VARCHAR},
+      </if>
+      <if test="xiaoyuanyishengid != null">
+        xiaoyuanyishengid = #{xiaoyuanyishengid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="chuangjiantime != null">
+        chuangjiantime = #{chuangjiantime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="example.pojo.Xyyiliaopaiban">
+    update t_xyyiliaopaiban
+    set yuefen = #{yuefen,jdbcType=VARCHAR},
+      xiaoyuanyisheng = #{xiaoyuanyisheng,jdbcType=VARCHAR},
+      xiaoyuanyishengid = #{xiaoyuanyishengid,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      chuangjiantime = #{chuangjiantime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

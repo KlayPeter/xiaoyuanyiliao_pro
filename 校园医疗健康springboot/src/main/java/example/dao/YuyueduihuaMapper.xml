@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.YuyueduihuaMapper">
+  <resultMap id="BaseResultMap" type="example.pojo.Yuyueduihua">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="xyyiliaopaibanyuyue" jdbcType="VARCHAR" property="xyyiliaopaibanyuyue" />
+    <result column="xyyiliaopaibanyuyueid" jdbcType="INTEGER" property="xyyiliaopaibanyuyueid" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="duihuauser" jdbcType="VARCHAR" property="duihuauser" />
+    <result column="duihuauserid" jdbcType="INTEGER" property="duihuauserid" />
+    <result column="duihuauserrole" jdbcType="VARCHAR" property="duihuauserrole" />
+    <result column="duihuauserimg" jdbcType="VARCHAR" property="duihuauserimg" />
+    <result column="duihuauseraddtime" jdbcType="VARCHAR" property="duihuauseraddtime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, xyyiliaopaibanyuyue, xyyiliaopaibanyuyueid, message, duihuauser, duihuauserid, 
+    duihuauserrole, duihuauserimg, duihuauseraddtime
+  </sql>
+  <select id="selectByExample" parameterType="example.pojo.YuyueduihuaExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_yuyueduihua
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_yuyueduihua
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_yuyueduihua
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="example.pojo.YuyueduihuaExample">
+    delete from t_yuyueduihua
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="example.pojo.Yuyueduihua">
+    insert into t_yuyueduihua (id, xyyiliaopaibanyuyue, xyyiliaopaibanyuyueid, 
+      message, duihuauser, duihuauserid, 
+      duihuauserrole, duihuauserimg, duihuauseraddtime
+      )
+    values (#{id,jdbcType=INTEGER}, #{xyyiliaopaibanyuyue,jdbcType=VARCHAR}, #{xyyiliaopaibanyuyueid,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR}, #{duihuauser,jdbcType=VARCHAR}, #{duihuauserid,jdbcType=INTEGER}, 
+      #{duihuauserrole,jdbcType=VARCHAR}, #{duihuauserimg,jdbcType=VARCHAR}, #{duihuauseraddtime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="example.pojo.Yuyueduihua">
+    insert into t_yuyueduihua
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="xyyiliaopaibanyuyue != null">
+        xyyiliaopaibanyuyue,
+      </if>
+      <if test="xyyiliaopaibanyuyueid != null">
+        xyyiliaopaibanyuyueid,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+      <if test="duihuauser != null">
+        duihuauser,
+      </if>
+      <if test="duihuauserid != null">
+        duihuauserid,
+      </if>
+      <if test="duihuauserrole != null">
+        duihuauserrole,
+      </if>
+      <if test="duihuauserimg != null">
+        duihuauserimg,
+      </if>
+      <if test="duihuauseraddtime != null">
+        duihuauseraddtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="xyyiliaopaibanyuyue != null">
+        #{xyyiliaopaibanyuyue,jdbcType=VARCHAR},
+      </if>
+      <if test="xyyiliaopaibanyuyueid != null">
+        #{xyyiliaopaibanyuyueid,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="duihuauser != null">
+        #{duihuauser,jdbcType=VARCHAR},
+      </if>
+      <if test="duihuauserid != null">
+        #{duihuauserid,jdbcType=INTEGER},
+      </if>
+      <if test="duihuauserrole != null">
+        #{duihuauserrole,jdbcType=VARCHAR},
+      </if>
+      <if test="duihuauserimg != null">
+        #{duihuauserimg,jdbcType=VARCHAR},
+      </if>
+      <if test="duihuauseraddtime != null">
+        #{duihuauseraddtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="example.pojo.YuyueduihuaExample" resultType="java.lang.Long">
+    select count(*) from t_yuyueduihua
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_yuyueduihua
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.xyyiliaopaibanyuyue != null">
+        xyyiliaopaibanyuyue = #{record.xyyiliaopaibanyuyue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xyyiliaopaibanyuyueid != null">
+        xyyiliaopaibanyuyueid = #{record.xyyiliaopaibanyuyueid,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+      <if test="record.duihuauser != null">
+        duihuauser = #{record.duihuauser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.duihuauserid != null">
+        duihuauserid = #{record.duihuauserid,jdbcType=INTEGER},
+      </if>
+      <if test="record.duihuauserrole != null">
+        duihuauserrole = #{record.duihuauserrole,jdbcType=VARCHAR},
+      </if>
+      <if test="record.duihuauserimg != null">
+        duihuauserimg = #{record.duihuauserimg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.duihuauseraddtime != null">
+        duihuauseraddtime = #{record.duihuauseraddtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_yuyueduihua
+    set id = #{record.id,jdbcType=INTEGER},
+      xyyiliaopaibanyuyue = #{record.xyyiliaopaibanyuyue,jdbcType=VARCHAR},
+      xyyiliaopaibanyuyueid = #{record.xyyiliaopaibanyuyueid,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR},
+      duihuauser = #{record.duihuauser,jdbcType=VARCHAR},
+      duihuauserid = #{record.duihuauserid,jdbcType=INTEGER},
+      duihuauserrole = #{record.duihuauserrole,jdbcType=VARCHAR},
+      duihuauserimg = #{record.duihuauserimg,jdbcType=VARCHAR},
+      duihuauseraddtime = #{record.duihuauseraddtime,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="example.pojo.Yuyueduihua">
+    update t_yuyueduihua
+    <set>
+      <if test="xyyiliaopaibanyuyue != null">
+        xyyiliaopaibanyuyue = #{xyyiliaopaibanyuyue,jdbcType=VARCHAR},
+      </if>
+      <if test="xyyiliaopaibanyuyueid != null">
+        xyyiliaopaibanyuyueid = #{xyyiliaopaibanyuyueid,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="duihuauser != null">
+        duihuauser = #{duihuauser,jdbcType=VARCHAR},
+      </if>
+      <if test="duihuauserid != null">
+        duihuauserid = #{duihuauserid,jdbcType=INTEGER},
+      </if>
+      <if test="duihuauserrole != null">
+        duihuauserrole = #{duihuauserrole,jdbcType=VARCHAR},
+      </if>
+      <if test="duihuauserimg != null">
+        duihuauserimg = #{duihuauserimg,jdbcType=VARCHAR},
+      </if>
+      <if test="duihuauseraddtime != null">
+        duihuauseraddtime = #{duihuauseraddtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="example.pojo.Yuyueduihua">
+    update t_yuyueduihua
+    set xyyiliaopaibanyuyue = #{xyyiliaopaibanyuyue,jdbcType=VARCHAR},
+      xyyiliaopaibanyuyueid = #{xyyiliaopaibanyuyueid,jdbcType=INTEGER},
+      message = #{message,jdbcType=VARCHAR},
+      duihuauser = #{duihuauser,jdbcType=VARCHAR},
+      duihuauserid = #{duihuauserid,jdbcType=INTEGER},
+      duihuauserrole = #{duihuauserrole,jdbcType=VARCHAR},
+      duihuauserimg = #{duihuauserimg,jdbcType=VARCHAR},
+      duihuauseraddtime = #{duihuauseraddtime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

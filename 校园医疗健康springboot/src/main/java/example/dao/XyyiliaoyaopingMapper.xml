@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.XyyiliaoyaopingMapper">
+  <resultMap id="BaseResultMap" type="example.pojo.Xyyiliaoyaoping">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="drugname" jdbcType="VARCHAR" property="drugname" />
+    <result column="shengchanchangjia" jdbcType="VARCHAR" property="shengchanchangjia" />
+    <result column="danwei" jdbcType="VARCHAR" property="danwei" />
+    <result column="yaopingfenlei" jdbcType="VARCHAR" property="yaopingfenlei" />
+    <result column="kucun" jdbcType="VARCHAR" property="kucun" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="tixingkucun" jdbcType="VARCHAR" property="tixingkucun" />
+    <result column="shuoming" jdbcType="VARCHAR" property="shuoming" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, drugname, shengchanchangjia, danwei, yaopingfenlei, kucun, price, tixingkucun, 
+    shuoming
+  </sql>
+  <select id="selectByExample" parameterType="example.pojo.XyyiliaoyaopingExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_xyyiliaoyaoping
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_xyyiliaoyaoping
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_xyyiliaoyaoping
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="example.pojo.XyyiliaoyaopingExample">
+    delete from t_xyyiliaoyaoping
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="example.pojo.Xyyiliaoyaoping">
+    insert into t_xyyiliaoyaoping (id, drugname, shengchanchangjia, 
+      danwei, yaopingfenlei, kucun, 
+      price, tixingkucun, shuoming
+      )
+    values (#{id,jdbcType=INTEGER}, #{drugname,jdbcType=VARCHAR}, #{shengchanchangjia,jdbcType=VARCHAR}, 
+      #{danwei,jdbcType=VARCHAR}, #{yaopingfenlei,jdbcType=VARCHAR}, #{kucun,jdbcType=VARCHAR}, 
+      #{price,jdbcType=VARCHAR}, #{tixingkucun,jdbcType=VARCHAR}, #{shuoming,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="example.pojo.Xyyiliaoyaoping">
+    insert into t_xyyiliaoyaoping
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="drugname != null">
+        drugname,
+      </if>
+      <if test="shengchanchangjia != null">
+        shengchanchangjia,
+      </if>
+      <if test="danwei != null">
+        danwei,
+      </if>
+      <if test="yaopingfenlei != null">
+        yaopingfenlei,
+      </if>
+      <if test="kucun != null">
+        kucun,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="tixingkucun != null">
+        tixingkucun,
+      </if>
+      <if test="shuoming != null">
+        shuoming,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="drugname != null">
+        #{drugname,jdbcType=VARCHAR},
+      </if>
+      <if test="shengchanchangjia != null">
+        #{shengchanchangjia,jdbcType=VARCHAR},
+      </if>
+      <if test="danwei != null">
+        #{danwei,jdbcType=VARCHAR},
+      </if>
+      <if test="yaopingfenlei != null">
+        #{yaopingfenlei,jdbcType=VARCHAR},
+      </if>
+      <if test="kucun != null">
+        #{kucun,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="tixingkucun != null">
+        #{tixingkucun,jdbcType=VARCHAR},
+      </if>
+      <if test="shuoming != null">
+        #{shuoming,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="example.pojo.XyyiliaoyaopingExample" resultType="java.lang.Long">
+    select count(*) from t_xyyiliaoyaoping
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_xyyiliaoyaoping
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.drugname != null">
+        drugname = #{record.drugname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shengchanchangjia != null">
+        shengchanchangjia = #{record.shengchanchangjia,jdbcType=VARCHAR},
+      </if>
+      <if test="record.danwei != null">
+        danwei = #{record.danwei,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yaopingfenlei != null">
+        yaopingfenlei = #{record.yaopingfenlei,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kucun != null">
+        kucun = #{record.kucun,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tixingkucun != null">
+        tixingkucun = #{record.tixingkucun,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shuoming != null">
+        shuoming = #{record.shuoming,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_xyyiliaoyaoping
+    set id = #{record.id,jdbcType=INTEGER},
+      drugname = #{record.drugname,jdbcType=VARCHAR},
+      shengchanchangjia = #{record.shengchanchangjia,jdbcType=VARCHAR},
+      danwei = #{record.danwei,jdbcType=VARCHAR},
+      yaopingfenlei = #{record.yaopingfenlei,jdbcType=VARCHAR},
+      kucun = #{record.kucun,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=VARCHAR},
+      tixingkucun = #{record.tixingkucun,jdbcType=VARCHAR},
+      shuoming = #{record.shuoming,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="example.pojo.Xyyiliaoyaoping">
+    update t_xyyiliaoyaoping
+    <set>
+      <if test="drugname != null">
+        drugname = #{drugname,jdbcType=VARCHAR},
+      </if>
+      <if test="shengchanchangjia != null">
+        shengchanchangjia = #{shengchanchangjia,jdbcType=VARCHAR},
+      </if>
+      <if test="danwei != null">
+        danwei = #{danwei,jdbcType=VARCHAR},
+      </if>
+      <if test="yaopingfenlei != null">
+        yaopingfenlei = #{yaopingfenlei,jdbcType=VARCHAR},
+      </if>
+      <if test="kucun != null">
+        kucun = #{kucun,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="tixingkucun != null">
+        tixingkucun = #{tixingkucun,jdbcType=VARCHAR},
+      </if>
+      <if test="shuoming != null">
+        shuoming = #{shuoming,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="example.pojo.Xyyiliaoyaoping">
+    update t_xyyiliaoyaoping
+    set drugname = #{drugname,jdbcType=VARCHAR},
+      shengchanchangjia = #{shengchanchangjia,jdbcType=VARCHAR},
+      danwei = #{danwei,jdbcType=VARCHAR},
+      yaopingfenlei = #{yaopingfenlei,jdbcType=VARCHAR},
+      kucun = #{kucun,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      tixingkucun = #{tixingkucun,jdbcType=VARCHAR},
+      shuoming = #{shuoming,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

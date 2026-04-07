@@ -1,0 +1,314 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		//定义首页
+		{
+			"path": "pages/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/register",
+			"style": {
+				"navigationBarTitleText": "注册"
+			}
+		},
+				{
+					"path": "pages/xiaoyuanyishengIndex",
+					"style": {
+						"navigationBarTitleText": "个人中心"
+					}
+				},
+				{
+					"path": "pages/xyyiliaoyhIndex",
+					"style": {
+						"navigationBarTitleText": "个人中心"
+					}
+				},
+						{
+							"path": "pages/xiaoyuanyishengAddXyyiliaopaiban",
+							"style": {
+								"navigationBarTitleText": "添加校园医疗排班"
+							}
+						},
+						{
+							"path": "pages/xiaoyuanyishengUpdateXyyiliaopaiban",
+							"style": {
+								"navigationBarTitleText": "修改校园医疗排班"
+							}
+						},
+						{
+							"path": "pages/xiaoyuanyishengXyyiliaopaibanList",
+							"style": {
+								"navigationBarTitleText": "校园医疗排班列表"
+							}
+						},
+						{
+							"path": "pages/xiaoyuanyishengAddXyyiliaopaibanyuyue",
+							"style": {
+								"navigationBarTitleText": "添加校园医疗排班预约"
+							}
+						},
+						{
+							"path": "pages/xiaoyuanyishengUpdateXyyiliaopaibanyuyue",
+							"style": {
+								"navigationBarTitleText": "修改校园医疗排班预约"
+							}
+						},
+						{
+							"path": "pages/xiaoyuanyishengXyyiliaopaibanyuyueList",
+							"style": {
+								"navigationBarTitleText": "校园医疗排班预约列表"
+							}
+						},
+						{
+							"path": "pages/xiaoyuanyishengAddGuahaozixunjieguo",
+							"style": {
+								"navigationBarTitleText": "添加挂号咨询结果"
+							}
+						},
+						{
+							"path": "pages/xiaoyuanyishengUpdateGuahaozixunjieguo",
+							"style": {
+								"navigationBarTitleText": "修改挂号咨询结果"
+							}
+						},
+						{
+							"path": "pages/xiaoyuanyishengGuahaozixunjieguoList",
+							"style": {
+								"navigationBarTitleText": "挂号咨询结果列表"
+							}
+						},
+						{
+							"path": "pages/xiaoyuanyishengAddXytijianshixiang",
+							"style": {
+								"navigationBarTitleText": "添加校园体检事项"
+							}
+						},
+						{
+							"path": "pages/xiaoyuanyishengUpdateXytijianshixiang",
+							"style": {
+								"navigationBarTitleText": "修改校园体检事项"
+							}
+						},
+						{
+							"path": "pages/xiaoyuanyishengXytijianshixiangList",
+							"style": {
+								"navigationBarTitleText": "校园体检事项列表"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhAddXyyiliaopaibanyuyue",
+							"style": {
+								"navigationBarTitleText": "添加校园医疗排班预约"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhUpdateXyyiliaopaibanyuyue",
+							"style": {
+								"navigationBarTitleText": "修改校园医疗排班预约"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhXyyiliaopaibanyuyueList",
+							"style": {
+								"navigationBarTitleText": "校园医疗排班预约列表"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhAddGuahaozixunjieguo",
+							"style": {
+								"navigationBarTitleText": "添加挂号咨询结果"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhUpdateGuahaozixunjieguo",
+							"style": {
+								"navigationBarTitleText": "修改挂号咨询结果"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhGuahaozixunjieguoList",
+							"style": {
+								"navigationBarTitleText": "挂号咨询结果列表"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhAddYhbinglijilv",
+							"style": {
+								"navigationBarTitleText": "添加用户病例记录"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhUpdateYhbinglijilv",
+							"style": {
+								"navigationBarTitleText": "修改用户病例记录"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhYhbinglijilvList",
+							"style": {
+								"navigationBarTitleText": "用户病例记录列表"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhAddYuyuepingjia",
+							"style": {
+								"navigationBarTitleText": "添加预约评价"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhUpdateYuyuepingjia",
+							"style": {
+								"navigationBarTitleText": "修改预约评价"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhYuyuepingjiaList",
+							"style": {
+								"navigationBarTitleText": "预约评价列表"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhAddTijianyhyuyue",
+							"style": {
+								"navigationBarTitleText": "添加体检用户预约"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhUpdateTijianyhyuyue",
+							"style": {
+								"navigationBarTitleText": "修改体检用户预约"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhTijianyhyuyueList",
+							"style": {
+								"navigationBarTitleText": "体检用户预约列表"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhAddJiankangdangan",
+							"style": {
+								"navigationBarTitleText": "添加健康档案"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhUpdateJiankangdangan",
+							"style": {
+								"navigationBarTitleText": "健康档案详细"
+							}
+						},
+						{
+							"path": "pages/xyyiliaoyhJiankangdanganList",
+							"style": {
+								"navigationBarTitleText": "健康档案列表"
+							}
+						},
+				{
+					"path": "pages/searchXiaoyuanyisheng",
+					"style": {
+						"navigationBarTitleText": "搜索校园医生"
+					}
+				},
+				{
+					"path": "pages/xiaoyuanyishengDetails",
+					"style": {
+						"navigationBarTitleText": "校园医生详细"
+					}
+				},
+				{
+					"path": "pages/searchXytijianshixiang",
+					"style": {
+						"navigationBarTitleText": "搜索校园体检事项"
+					}
+				},
+				{
+					"path": "pages/xytijianshixiangDetails",
+					"style": {
+						"navigationBarTitleText": "校园体检事项详细"
+					}
+				},
+				{
+					"path": "pages/searchXyggao",
+					"style": {
+						"navigationBarTitleText": "搜索校园公告"
+					}
+				},
+				{
+					"path": "pages/xyggaoDetails",
+					"style": {
+						"navigationBarTitleText": "校园公告详细"
+					}
+				},
+		{
+			"path": "pages/htMenu",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path" : "pages/duihua",
+			"style" : 
+			{
+				"navigationBarTitleText" : "对话"
+			}
+		},
+		{
+			"path" : "pages/aiduihua",
+			"style" : 
+			{
+				"navigationBarTitleText" : "AI问诊"
+			}
+		}
+
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#55aa7f",
+		"backgroundColor": "#FFFFFF"
+	},
+	"tabBar": {
+		"color": "#696969",
+		"selectedColor": "#f03d37",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index",
+			"iconPath": "static/首页.png",
+			"selectedIconPath": "static/首页.png",
+			"text": "首页"
+		},
+				{
+					"pagePath": "pages/searchXiaoyuanyisheng",
+					"iconPath": "static/搜索.png",
+					"selectedIconPath": "static/搜索.png",
+					"text": "校园医生"
+				},
+				{
+					"pagePath": "pages/searchXytijianshixiang",
+					"iconPath": "static/搜索.png",
+					"selectedIconPath": "static/搜索.png",
+					"text": "校园体检事项"
+				},
+				{
+					"pagePath": "pages/searchXyggao",
+					"iconPath": "static/搜索.png",
+					"selectedIconPath": "static/搜索.png",
+					"text": "校园公告"
+				},
+		{
+			"pagePath": "pages/htMenu",
+			"iconPath": "static/个人.png",
+			"selectedIconPath": "static/个人.png",
+			"text": "我的"
+		}]
+	}
+}

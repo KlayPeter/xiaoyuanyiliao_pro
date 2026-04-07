@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--数据库驱动 -->
+    <classPathEntry location="mysql-connector-java-8.0.22.jar"/>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--数据库链接地址账号密码 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost/xiaoyuanyiliaojiankang?useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;allowPublicKeyRetrieval=true" userId="root"
+                        password="root">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!--生成Model类存放位置 -->
+        <javaModelGenerator targetPackage="example.pojo"
+                            targetProject="../src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--生成映射文件存放位置 -->
+        <sqlMapGenerator targetPackage="example.dao"
+                         targetProject="../src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--生成Dao类存放位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="example.dao" targetProject="../src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+            <table tableName="t_admin" domainObjectName="Admin"></table>
+            <table tableName="t_xiaoyuanyisheng" domainObjectName="Xiaoyuanyisheng"></table>
+            <table tableName="t_xyyiliaoyh" domainObjectName="Xyyiliaoyh"></table>
+            <table tableName="t_xyyiliaopaiban" domainObjectName="Xyyiliaopaiban"></table>
+            <table tableName="t_xyyiliaopaibanyuyue" domainObjectName="Xyyiliaopaibanyuyue"></table>
+            <table tableName="t_guahaozixunjieguo" domainObjectName="Guahaozixunjieguo"></table>
+            <table tableName="t_yhbinglijilv" domainObjectName="Yhbinglijilv"></table>
+            <table tableName="t_yuyueduihua" domainObjectName="Yuyueduihua"></table>
+            <table tableName="t_yuyuepingjia" domainObjectName="Yuyuepingjia"></table>
+            <table tableName="t_xyyiliaoyaoping" domainObjectName="Xyyiliaoyaoping"></table>
+            <table tableName="t_xytijianshixiang" domainObjectName="Xytijianshixiang"></table>
+            <table tableName="t_tijianyhyuyue" domainObjectName="Tijianyhyuyue"></table>
+            <table tableName="t_jiankangdangan" domainObjectName="Jiankangdangan"></table>
+            <table tableName="t_xyggao" domainObjectName="Xyggao"></table>
+            <table tableName="t_yiliaoyaopingtixing" domainObjectName="Yiliaoyaopingtixing"></table>
+    </context>
+</generatorConfiguration>
+

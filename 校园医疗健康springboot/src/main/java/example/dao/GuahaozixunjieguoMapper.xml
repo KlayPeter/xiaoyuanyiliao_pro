@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.GuahaozixunjieguoMapper">
+  <resultMap id="BaseResultMap" type="example.pojo.Guahaozixunjieguo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="kaifangtime" jdbcType="VARCHAR" property="kaifangtime" />
+    <result column="zhusu" jdbcType="VARCHAR" property="zhusu" />
+    <result column="yonghutiwen" jdbcType="VARCHAR" property="yonghutiwen" />
+    <result column="xinlv" jdbcType="VARCHAR" property="xinlv" />
+    <result column="zhenduan" jdbcType="VARCHAR" property="zhenduan" />
+    <result column="xiuxijiany" jdbcType="VARCHAR" property="xiuxijiany" />
+    <result column="yongyao" jdbcType="VARCHAR" property="yongyao" />
+    <result column="xiaoyuanyisheng" jdbcType="VARCHAR" property="xiaoyuanyisheng" />
+    <result column="xiaoyuanyishengid" jdbcType="INTEGER" property="xiaoyuanyishengid" />
+    <result column="xyyiliaoyh" jdbcType="VARCHAR" property="xyyiliaoyh" />
+    <result column="xyyiliaoyhid" jdbcType="INTEGER" property="xyyiliaoyhid" />
+    <result column="xyyiliaopaibanyuyue" jdbcType="VARCHAR" property="xyyiliaopaibanyuyue" />
+    <result column="xyyiliaopaibanyuyueid" jdbcType="INTEGER" property="xyyiliaopaibanyuyueid" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, kaifangtime, zhusu, yonghutiwen, xinlv, zhenduan, xiuxijiany, yongyao, xiaoyuanyisheng, 
+    xiaoyuanyishengid, xyyiliaoyh, xyyiliaoyhid, xyyiliaopaibanyuyue, xyyiliaopaibanyuyueid, 
+    price, state
+  </sql>
+  <select id="selectByExample" parameterType="example.pojo.GuahaozixunjieguoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_guahaozixunjieguo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_guahaozixunjieguo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_guahaozixunjieguo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="example.pojo.GuahaozixunjieguoExample">
+    delete from t_guahaozixunjieguo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="example.pojo.Guahaozixunjieguo">
+    insert into t_guahaozixunjieguo (id, kaifangtime, zhusu, 
+      yonghutiwen, xinlv, zhenduan, 
+      xiuxijiany, yongyao, xiaoyuanyisheng, 
+      xiaoyuanyishengid, xyyiliaoyh, xyyiliaoyhid, 
+      xyyiliaopaibanyuyue, xyyiliaopaibanyuyueid, 
+      price, state)
+    values (#{id,jdbcType=INTEGER}, #{kaifangtime,jdbcType=VARCHAR}, #{zhusu,jdbcType=VARCHAR}, 
+      #{yonghutiwen,jdbcType=VARCHAR}, #{xinlv,jdbcType=VARCHAR}, #{zhenduan,jdbcType=VARCHAR}, 
+      #{xiuxijiany,jdbcType=VARCHAR}, #{yongyao,jdbcType=VARCHAR}, #{xiaoyuanyisheng,jdbcType=VARCHAR}, 
+      #{xiaoyuanyishengid,jdbcType=INTEGER}, #{xyyiliaoyh,jdbcType=VARCHAR}, #{xyyiliaoyhid,jdbcType=INTEGER}, 
+      #{xyyiliaopaibanyuyue,jdbcType=VARCHAR}, #{xyyiliaopaibanyuyueid,jdbcType=INTEGER}, 
+      #{price,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="example.pojo.Guahaozixunjieguo">
+    insert into t_guahaozixunjieguo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="kaifangtime != null">
+        kaifangtime,
+      </if>
+      <if test="zhusu != null">
+        zhusu,
+      </if>
+      <if test="yonghutiwen != null">
+        yonghutiwen,
+      </if>
+      <if test="xinlv != null">
+        xinlv,
+      </if>
+      <if test="zhenduan != null">
+        zhenduan,
+      </if>
+      <if test="xiuxijiany != null">
+        xiuxijiany,
+      </if>
+      <if test="yongyao != null">
+        yongyao,
+      </if>
+      <if test="xiaoyuanyisheng != null">
+        xiaoyuanyisheng,
+      </if>
+      <if test="xiaoyuanyishengid != null">
+        xiaoyuanyishengid,
+      </if>
+      <if test="xyyiliaoyh != null">
+        xyyiliaoyh,
+      </if>
+      <if test="xyyiliaoyhid != null">
+        xyyiliaoyhid,
+      </if>
+      <if test="xyyiliaopaibanyuyue != null">
+        xyyiliaopaibanyuyue,
+      </if>
+      <if test="xyyiliaopaibanyuyueid != null">
+        xyyiliaopaibanyuyueid,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="kaifangtime != null">
+        #{kaifangtime,jdbcType=VARCHAR},
+      </if>
+      <if test="zhusu != null">
+        #{zhusu,jdbcType=VARCHAR},
+      </if>
+      <if test="yonghutiwen != null">
+        #{yonghutiwen,jdbcType=VARCHAR},
+      </if>
+      <if test="xinlv != null">
+        #{xinlv,jdbcType=VARCHAR},
+      </if>
+      <if test="zhenduan != null">
+        #{zhenduan,jdbcType=VARCHAR},
+      </if>
+      <if test="xiuxijiany != null">
+        #{xiuxijiany,jdbcType=VARCHAR},
+      </if>
+      <if test="yongyao != null">
+        #{yongyao,jdbcType=VARCHAR},
+      </if>
+      <if test="xiaoyuanyisheng != null">
+        #{xiaoyuanyisheng,jdbcType=VARCHAR},
+      </if>
+      <if test="xiaoyuanyishengid != null">
+        #{xiaoyuanyishengid,jdbcType=INTEGER},
+      </if>
+      <if test="xyyiliaoyh != null">
+        #{xyyiliaoyh,jdbcType=VARCHAR},
+      </if>
+      <if test="xyyiliaoyhid != null">
+        #{xyyiliaoyhid,jdbcType=INTEGER},
+      </if>
+      <if test="xyyiliaopaibanyuyue != null">
+        #{xyyiliaopaibanyuyue,jdbcType=VARCHAR},
+      </if>
+      <if test="xyyiliaopaibanyuyueid != null">
+        #{xyyiliaopaibanyuyueid,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="example.pojo.GuahaozixunjieguoExample" resultType="java.lang.Long">
+    select count(*) from t_guahaozixunjieguo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_guahaozixunjieguo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.kaifangtime != null">
+        kaifangtime = #{record.kaifangtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhusu != null">
+        zhusu = #{record.zhusu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yonghutiwen != null">
+        yonghutiwen = #{record.yonghutiwen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xinlv != null">
+        xinlv = #{record.xinlv,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhenduan != null">
+        zhenduan = #{record.zhenduan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xiuxijiany != null">
+        xiuxijiany = #{record.xiuxijiany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yongyao != null">
+        yongyao = #{record.yongyao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xiaoyuanyisheng != null">
+        xiaoyuanyisheng = #{record.xiaoyuanyisheng,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xiaoyuanyishengid != null">
+        xiaoyuanyishengid = #{record.xiaoyuanyishengid,jdbcType=INTEGER},
+      </if>
+      <if test="record.xyyiliaoyh != null">
+        xyyiliaoyh = #{record.xyyiliaoyh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xyyiliaoyhid != null">
+        xyyiliaoyhid = #{record.xyyiliaoyhid,jdbcType=INTEGER},
+      </if>
+      <if test="record.xyyiliaopaibanyuyue != null">
+        xyyiliaopaibanyuyue = #{record.xyyiliaopaibanyuyue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xyyiliaopaibanyuyueid != null">
+        xyyiliaopaibanyuyueid = #{record.xyyiliaopaibanyuyueid,jdbcType=INTEGER},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_guahaozixunjieguo
+    set id = #{record.id,jdbcType=INTEGER},
+      kaifangtime = #{record.kaifangtime,jdbcType=VARCHAR},
+      zhusu = #{record.zhusu,jdbcType=VARCHAR},
+      yonghutiwen = #{record.yonghutiwen,jdbcType=VARCHAR},
+      xinlv = #{record.xinlv,jdbcType=VARCHAR},
+      zhenduan = #{record.zhenduan,jdbcType=VARCHAR},
+      xiuxijiany = #{record.xiuxijiany,jdbcType=VARCHAR},
+      yongyao = #{record.yongyao,jdbcType=VARCHAR},
+      xiaoyuanyisheng = #{record.xiaoyuanyisheng,jdbcType=VARCHAR},
+      xiaoyuanyishengid = #{record.xiaoyuanyishengid,jdbcType=INTEGER},
+      xyyiliaoyh = #{record.xyyiliaoyh,jdbcType=VARCHAR},
+      xyyiliaoyhid = #{record.xyyiliaoyhid,jdbcType=INTEGER},
+      xyyiliaopaibanyuyue = #{record.xyyiliaopaibanyuyue,jdbcType=VARCHAR},
+      xyyiliaopaibanyuyueid = #{record.xyyiliaopaibanyuyueid,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="example.pojo.Guahaozixunjieguo">
+    update t_guahaozixunjieguo
+    <set>
+      <if test="kaifangtime != null">
+        kaifangtime = #{kaifangtime,jdbcType=VARCHAR},
+      </if>
+      <if test="zhusu != null">
+        zhusu = #{zhusu,jdbcType=VARCHAR},
+      </if>
+      <if test="yonghutiwen != null">
+        yonghutiwen = #{yonghutiwen,jdbcType=VARCHAR},
+      </if>
+      <if test="xinlv != null">
+        xinlv = #{xinlv,jdbcType=VARCHAR},
+      </if>
+      <if test="zhenduan != null">
+        zhenduan = #{zhenduan,jdbcType=VARCHAR},
+      </if>
+      <if test="xiuxijiany != null">
+        xiuxijiany = #{xiuxijiany,jdbcType=VARCHAR},
+      </if>
+      <if test="yongyao != null">
+        yongyao = #{yongyao,jdbcType=VARCHAR},
+      </if>
+      <if test="xiaoyuanyisheng != null">
+        xiaoyuanyisheng = #{xiaoyuanyisheng,jdbcType=VARCHAR},
+      </if>
+      <if test="xiaoyuanyishengid != null">
+        xiaoyuanyishengid = #{xiaoyuanyishengid,jdbcType=INTEGER},
+      </if>
+      <if test="xyyiliaoyh != null">
+        xyyiliaoyh = #{xyyiliaoyh,jdbcType=VARCHAR},
+      </if>
+      <if test="xyyiliaoyhid != null">
+        xyyiliaoyhid = #{xyyiliaoyhid,jdbcType=INTEGER},
+      </if>
+      <if test="xyyiliaopaibanyuyue != null">
+        xyyiliaopaibanyuyue = #{xyyiliaopaibanyuyue,jdbcType=VARCHAR},
+      </if>
+      <if test="xyyiliaopaibanyuyueid != null">
+        xyyiliaopaibanyuyueid = #{xyyiliaopaibanyuyueid,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="example.pojo.Guahaozixunjieguo">
+    update t_guahaozixunjieguo
+    set kaifangtime = #{kaifangtime,jdbcType=VARCHAR},
+      zhusu = #{zhusu,jdbcType=VARCHAR},
+      yonghutiwen = #{yonghutiwen,jdbcType=VARCHAR},
+      xinlv = #{xinlv,jdbcType=VARCHAR},
+      zhenduan = #{zhenduan,jdbcType=VARCHAR},
+      xiuxijiany = #{xiuxijiany,jdbcType=VARCHAR},
+      yongyao = #{yongyao,jdbcType=VARCHAR},
+      xiaoyuanyisheng = #{xiaoyuanyisheng,jdbcType=VARCHAR},
+      xiaoyuanyishengid = #{xiaoyuanyishengid,jdbcType=INTEGER},
+      xyyiliaoyh = #{xyyiliaoyh,jdbcType=VARCHAR},
+      xyyiliaoyhid = #{xyyiliaoyhid,jdbcType=INTEGER},
+      xyyiliaopaibanyuyue = #{xyyiliaopaibanyuyue,jdbcType=VARCHAR},
+      xyyiliaopaibanyuyueid = #{xyyiliaopaibanyuyueid,jdbcType=INTEGER},
+      price = #{price,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

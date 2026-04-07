@@ -1,0 +1,35 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /xiaoyuanyiliaojiankang
+    session:
+      timeout: 1000000000000h
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/xiaoyuanyiliaojiankang?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  mvc:
+    view:
+      prefix: /WEB-INF/pages/
+      suffix: .jsp
+  # thymeleaf:
+  #   prefix: classpath:/WEB-INF/pages/
+  #   suffix: .html
+  #   mode: HTML
+  #   cache: false
+  servlet:
+    multipart:
+#      500MB
+      max-request-size: 504857600
+#        100 MB
+      max-file-size: 104857600
+
+mybatis:
+  mapper-locations: classpath:dao/*.xml
+
+logging:
+  config: classpath:logback.xml
+
