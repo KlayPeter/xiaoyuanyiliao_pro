@@ -70,13 +70,13 @@
 					success: (res) => {
 						const tempFilePaths = res.tempFilePaths;
 						uni.uploadFile({
-							url: this.$host + "upload",
+							url: "uploadFile",
 							filePath: tempFilePaths[0],
 							name: 'file',
 							success: (uploadFileRes) => {
 								let path = uploadFileRes.data
-								if (path.includes('{"path"')) {
-									path = JSON.parse(path).path;
+								if (path.includes('{"fileUrl"')) {
+									path = JSON.parse(path).fileUrl;
 								}
 								this.tempVoucher = path;
 								uni.showToast({title: "凭证已上传，请确认支付", icon: "none"});
@@ -92,9 +92,8 @@
 				
 				// Using the backend update API - usually requires form-encoded OR json
 				uni.request({
-					url: "updateYhbinglijilvStr",
+					url: "updateYhbinglijilvactJson",
 					method: "POST",
-					header: { "content-type": "application/x-www-form-urlencoded" },
 					data: this.order,
 					success: () => {
 						uni.showToast({ title: "支付成功" });
