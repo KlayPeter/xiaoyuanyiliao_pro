@@ -121,14 +121,14 @@
 </script>
 
 <style scoped lang="scss">
-  @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+  
   .anime-search-container {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5e6ff 0%, #d0e6ff 100%);
-    font-family: 'ZCOOL KuaiLe', 'Smiley Sans', '微软雅黑', sans-serif;
+    background-color: #f5f7fa;
+    
   }
 
   .search-section {
@@ -145,21 +145,21 @@
       .search-input {
         flex: 1;
         font-size: 18px;
-        font-family: 'ZCOOL KuaiLe', cursive;
+        
       }
       .el-button {
         border-radius: 20px;
         font-size: 16px;
-        font-family: 'ZCOOL KuaiLe', cursive;
+        
       }
     }
   }
 
   .section-title {
     font-size: 24px;
-    color: #6B73FF;
+    color: #409EFF;
     margin-bottom: 20px;
-    font-family: 'ZCOOL KuaiLe', cursive;
+    
     letter-spacing: 2px;
   }
 
@@ -207,8 +207,8 @@
         padding: 16px;
         .gonggao-title {
           font-size: 20px;
-          color: #ff6f91;
-          font-family: 'ZCOOL KuaiLe', cursive;
+          color: #303133;
+          
           margin-bottom: 8px;
         }
         .gonggao-desc {
@@ -219,7 +219,7 @@
         }
         .gonggao-time {
           font-size: 13px;
-          color: #6B73FF;
+          color: #409EFF;
         }
       }
     }
@@ -245,7 +245,7 @@
       height: 42px;
       background: linear-gradient(135deg, #ff9ebc, #6b73ff);
       color: #fff;
-      font-family: 'ZCOOL KuaiLe', cursive;
+      
       border: none;
       cursor: pointer;
       overflow: hidden;

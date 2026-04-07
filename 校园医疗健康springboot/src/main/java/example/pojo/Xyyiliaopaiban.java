@@ -12,6 +12,11 @@ public class Xyyiliaopaiban {
     private String remark;
 
     private String chuangjiantime;
+    private Integer yuyueshangxian;
+
+    public Integer getYuyueshangxian() { return yuyueshangxian; }
+    public void setYuyueshangxian(Integer yuyueshangxian) { this.yuyueshangxian = yuyueshangxian; }
+
 
     public Integer getId() {
         return id;

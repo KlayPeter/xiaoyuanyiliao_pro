@@ -14,6 +14,15 @@
     <result column="xiaoyuanyishengid" jdbcType="INTEGER" property="xiaoyuanyishengid" />
     <result column="xyyiliaoyh" jdbcType="VARCHAR" property="xyyiliaoyh" />
     <result column="xyyiliaoyhid" jdbcType="INTEGER" property="xyyiliaoyhid" />
+    <result column="jiwangshi" jdbcType="VARCHAR" property="jiwangshi" />
+    <result column="xingbie" jdbcType="VARCHAR" property="xingbie" />
+    <result column="nianling" jdbcType="VARCHAR" property="nianling" />
+    <result column="xuehao" jdbcType="VARCHAR" property="xuehao" />
+    <result column="lianxidianhua" jdbcType="VARCHAR" property="lianxidianhua" />
+    <result column="guominshi" jdbcType="VARCHAR" property="guominshi" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="zhifujine" jdbcType="DECIMAL" property="zhifujine" />
+    <result column="zhifupingzheng" jdbcType="VARCHAR" property="zhifupingzheng" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,7 +84,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, jilvtime, zhusu, yonghutiwen, xinlv, zhenduan, xiuxijiany, yongyao, xiaoyuanyisheng, 
-    xiaoyuanyishengid, xyyiliaoyh, xyyiliaoyhid
+    xiaoyuanyishengid, xyyiliaoyh, xyyiliaoyhid, jiwangshi, xingbie, nianling, xuehao, lianxidianhua, guominshi, state, zhifujine, zhifupingzheng
   </sql>
   <select id="selectByExample" parameterType="example.pojo.YhbinglijilvExample" resultMap="BaseResultMap">
     select
@@ -158,6 +167,33 @@
       <if test="xyyiliaoyhid != null">
         xyyiliaoyhid,
       </if>
+      <if test="jiwangshi != null">
+        jiwangshi,
+      </if>
+      <if test="xingbie != null">
+        xingbie,
+      </if>
+      <if test="nianling != null">
+        nianling,
+      </if>
+      <if test="xuehao != null">
+        xuehao,
+      </if>
+      <if test="lianxidianhua != null">
+        lianxidianhua,
+      </if>
+      <if test="guominshi != null">
+        guominshi,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="zhifujine != null">
+        zhifujine,
+      </if>
+      <if test="zhifupingzheng != null">
+        zhifupingzheng,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -195,6 +231,33 @@
       </if>
       <if test="xyyiliaoyhid != null">
         #{xyyiliaoyhid,jdbcType=INTEGER},
+      </if>
+      <if test="jiwangshi != null">
+        #{jiwangshi,jdbcType=VARCHAR},
+      </if>
+      <if test="xingbie != null">
+        #{xingbie,jdbcType=VARCHAR},
+      </if>
+      <if test="nianling != null">
+        #{nianling,jdbcType=VARCHAR},
+      </if>
+      <if test="xuehao != null">
+        #{xuehao,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxidianhua != null">
+        #{lianxidianhua,jdbcType=VARCHAR},
+      </if>
+      <if test="guominshi != null">
+        #{guominshi,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="zhifujine != null">
+        #{zhifujine,jdbcType=DECIMAL},
+      </if>
+      <if test="zhifupingzheng != null">
+        #{zhifupingzheng,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -301,6 +364,33 @@
       </if>
       <if test="xyyiliaoyhid != null">
         xyyiliaoyhid = #{xyyiliaoyhid,jdbcType=INTEGER},
+      </if>
+      <if test="jiwangshi != null">
+        jiwangshi = #{jiwangshi,jdbcType=VARCHAR},
+      </if>
+      <if test="xingbie != null">
+        xingbie = #{xingbie,jdbcType=VARCHAR},
+      </if>
+      <if test="nianling != null">
+        nianling = #{nianling,jdbcType=VARCHAR},
+      </if>
+      <if test="xuehao != null">
+        xuehao = #{xuehao,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxidianhua != null">
+        lianxidianhua = #{lianxidianhua,jdbcType=VARCHAR},
+      </if>
+      <if test="guominshi != null">
+        guominshi = #{guominshi,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="zhifujine != null">
+        zhifujine = #{zhifujine,jdbcType=DECIMAL},
+      </if>
+      <if test="zhifupingzheng != null">
+        zhifupingzheng = #{zhifupingzheng,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

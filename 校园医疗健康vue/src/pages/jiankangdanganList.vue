@@ -1,6 +1,6 @@
 <template>
     <div class="anime-page">
-        <h2 class="anime-card-title">健康档案管理</h2>
+        <h2 class="anime-card-title">体测档案管理</h2>
 
         <div class="search-area">
             <el-input placeholder="请输入测试时间" v-model="search" clearable></el-input>
@@ -9,22 +9,22 @@
 
         <el-table :data="showJiankangdanganArr" stripe style="width: 100%;" height="600px" class="anime-table">
                     <el-table-column prop="shijian" label="测试时间" min-width="100" />
-                    <el-table-column prop="height" label="身高" min-width="100" />
-                    <el-table-column prop="weight" label="体重" min-width="100" />
+                    <el-table-column prop="height" label="身高(cm)" min-width="100" />
+                    <el-table-column prop="weight" label="体重(kg)" min-width="100" />
                     <el-table-column prop="bmi" label="bmi数值" min-width="100" />
-                    <el-table-column prop="zuoyanshili" label="左眼视力" min-width="100" />
-                    <el-table-column prop="youyanshili" label="右眼视力" min-width="100" />
-                    <el-table-column prop="feihuoliang" label="肺活量" min-width="100" />
+                    <el-table-column prop="zuoyanshili" label="50m成绩(s)" min-width="100" />
+                    <el-table-column prop="youyanshili" label="800m成绩(s)" min-width="100" />
+                    <el-table-column prop="feihuoliang" label="肺活量(ml)" min-width="100" />
                     <el-table-column prop="lidingtiaoyuan" label="立定跳远成绩" min-width="100" />
                     <el-table-column prop="yibaimi" label="一百米 成绩" min-width="100" />
                     <el-table-column prop="xyyiliaoyh" label="校园医疗用户" min-width="100" />
                     <el-table-column prop="xyyiliaoyhid" label="校园医疗用户id" min-width="100" />
-            <el-table-column fixed="right" label="操作" min-width="120">
+            <el-table-column fixed="right" label="操作" min-width="180">
                 <template #default="scope">
-                    <el-button class="anime-btn" size="small"
+                    <el-button type="primary" plain size="small"
                                @click.prevent="toUpdateJiankangdangan(scope.row.id)"
                     >修改</el-button>
-                    <el-button class="anime-btn-cancel" size="small"
+                    <el-button type="danger" plain size="small"
                                @click.prevent="deleteJiankangdanganJson(scope.row.id)"
                     >删除</el-button>
                 </template>
@@ -60,8 +60,8 @@
         var _this = this
         console.log(id)
         this.axios.post("/deleteJiankangdanganJson?id=" + id, {}).then(res => {
-          if (res.data.message == '删除健康档案成功') {
-            _this.$toast.success("删除健康档案成功", {
+          if (res.data.message == '删除体测档案成功') {
+            _this.$toast.success("删除体测档案成功", {
               position: "top",
               pauseOnHover: false,
               duration: 2000
@@ -141,144 +141,47 @@
   export default jiankangdanganList
 </script>
 
+
 <style scoped lang="scss">
   .anime-page {
-    padding: 25px;
-
-    .anime-card-title {
-      font-size: 24px;
-      font-weight: bold;
-      color: #ff7f50;
-      margin-bottom: 15px;
-      text-align: center;
-      letter-spacing: 1px;
-    }
-
-    .search-area {
-      display: flex;
-      margin-bottom: 15px;
-
-      .el-input {
-        border-radius: 25px;
-
-        .el-input__inner {
-          border: 2px solid #ffe0c2;
-          height: 40px;
-          transition: all 0.3s ease;
-        }
-        .el-input__inner:focus {
-          border-color: #ffb38a;
-          background-color: #fff9f5;
-          box-shadow: 0 0 6px rgba(255, 160, 122, 0.3);
-        }
-      }
-
-      .el-button {
-        margin-left: 10px;
-        border-radius: 25px;
-        background-color: #ffb38a;
-        border-color: #ffb38a;
-        color: #fff;
-        font-weight: bold;
-
-        &:hover {
-          background-color: #ff9e6e;
-          border-color: #ff9e6e;
-        }
-      }
-    }
-
-    .anime-table {
-      border-radius: 25px;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(255, 160, 122, 0.15);
-      background-color: #fffaf5;
-
-      th {
-        background-color: #ffe5d0;
-        color: #ff7f50;
-        font-weight: bold;
-        text-align: center;
-      }
-      td {
-        background-color: #fff9f5;
-        color: #ff6f61;
-        text-align: center;
-      }
-
-      .el-table__row {
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        border-radius: 20px;
-        &:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 4px 12px rgba(255, 160, 122, 0.25);
-        }
-      }
-
-      .avatar-frame img {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        border: 2px solid #ffd6b0;
-        box-shadow: 0 2px 6px rgba(255, 160, 122, 0.2);
-        object-fit: cover;
-      }
-    }
-
-    .anime-btn {
-      border-radius: 20px;
-      background-color: #fff0e6;
-      color: #ff7f50;
-      border: none;
-      padding: 2px 12px;
-      margin: 2px;
-
-      &:hover {
-        background-color: #ffe2cf;
-        color: #ff6f61;
-      }
-    }
-
-    .anime-btn-cancel {
-      border-radius: 20px;
-      background-color: #fffaf5;
-      color: #ff7f50;
-      border: 1px solid #ffe0c2;
-      padding: 2px 12px;
-      margin: 2px;
-
-      &:hover {
-        background-color: #fff5ef;
-        border-color: #ffb38a;
-        color: #ff6f61;
-      }
-    }
-
-    .pagination-area {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-
-      .el-button {
-        border-radius: 20px;
-        font-weight: bold;
-        background-color: #fffaf5;
-        border: 1px solid #ffe0c2;
-        color: #ff7f50;
-        transition: all 0.3s ease;
-
-        &:hover {
-          background-color: #fff5ef;
-          border-color: #ffb38a;
-          color: #ff6f61;
-        }
-
-        &.is-disabled {
-          color: #ccc;
-          border-color: #ffe0c2;
-          background-color: #fffaf5;
-        }
-      }
-    }
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.05);
+    margin: 20px;
+  }
+  .anime-card-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #303133;
+    margin-bottom: 24px;
+    text-align: left;
+    border-bottom: 1px solid #ebeef5;
+    padding-bottom: 15px;
+  }
+  .search-area {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  .search-area .el-input {
+    width: 240px;
+  }
+  .anime-table {
+    border: 1px solid #ebeef5;
+    border-bottom: none;
+  }
+  .avatar-frame img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #ebeef5;
+    object-fit: cover;
+  }
+  .pagination-area {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
   }
 </style>
+

@@ -8,6 +8,7 @@
     <result column="xiaoyuanyishengid" jdbcType="INTEGER" property="xiaoyuanyishengid" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="chuangjiantime" jdbcType="VARCHAR" property="chuangjiantime" />
+    <result column="yuyueshangxian" jdbcType="INTEGER" property="yuyueshangxian" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, yuefen, xiaoyuanyisheng, xiaoyuanyishengid, remark, chuangjiantime
+    id, yuefen, xiaoyuanyisheng, xiaoyuanyishengid, remark, chuangjiantime, yuyueshangxian
   </sql>
   <select id="selectByExample" parameterType="example.pojo.XyyiliaopaibanExample" resultMap="BaseResultMap">
     select
@@ -129,6 +130,9 @@
       <if test="chuangjiantime != null">
         chuangjiantime,
       </if>
+      <if test="yuyueshangxian != null">
+        yuyueshangxian,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -148,6 +152,9 @@
       </if>
       <if test="chuangjiantime != null">
         #{chuangjiantime,jdbcType=VARCHAR},
+      </if>
+      <if test="yuyueshangxian != null">
+        #{yuyueshangxian,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -212,6 +219,9 @@
       </if>
       <if test="chuangjiantime != null">
         chuangjiantime = #{chuangjiantime,jdbcType=VARCHAR},
+      </if>
+      <if test="yuyueshangxian != null">
+        yuyueshangxian = #{yuyueshangxian,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

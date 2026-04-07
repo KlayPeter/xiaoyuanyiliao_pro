@@ -1,7 +1,7 @@
 <template>
     <div class="anime-page">
         <div class="anime-card">
-            <h2 class="page-header">修改健康档案</h2>
+            <h2 class="page-header">修改体测档案</h2>
             <el-form label-width="100px" class="form">
 
                 <el-form-item style="display: none" label="档案id">
@@ -10,29 +10,29 @@
                         <el-form-item label="测试时间">
                             <el-input placeholder="请输入测试时间" v-model="jiankangdangan.shijian" clearable />
                         </el-form-item>
-                        <el-form-item label="身高">
-                            <el-input placeholder="请输入身高" v-model="jiankangdangan.height" clearable />
+                        <el-form-item label="身高(cm)">
+                            <el-input placeholder="请输入身高(cm)" v-model="jiankangdangan.height" clearable />
                         </el-form-item>
-                        <el-form-item label="体重">
-                            <el-input placeholder="请输入体重" v-model="jiankangdangan.weight" clearable />
+                        <el-form-item label="体重(kg)">
+                            <el-input placeholder="请输入体重(kg)" v-model="jiankangdangan.weight" clearable />
                         </el-form-item>
                         <el-form-item label="bmi数值">
                             <el-input placeholder="请输入bmi数值" v-model="jiankangdangan.bmi" clearable />
                         </el-form-item>
-                        <el-form-item label="左眼视力">
-                            <el-input placeholder="请输入左眼视力" v-model="jiankangdangan.zuoyanshili" clearable />
+                        <el-form-item label="50m成绩(s)">
+                            <el-input placeholder="请输入左眼视力" v-model="jiankangdangan.wushimichengji" clearable />
                         </el-form-item>
-                        <el-form-item label="右眼视力">
-                            <el-input placeholder="请输入右眼视力" v-model="jiankangdangan.youyanshili" clearable />
+                        <el-form-item label="800m成绩(s)">
+                            <el-input placeholder="请输入右眼视力" v-model="jiankangdangan.babaimichengji" clearable />
                         </el-form-item>
-                        <el-form-item label="肺活量">
+                        <el-form-item label="肺活量(ml)">
                             <el-input placeholder="请输入肺活量" v-model="jiankangdangan.feihuoliang" clearable />
                         </el-form-item>
                         <el-form-item label="立定跳远成绩">
                             <el-input placeholder="请输入立定跳远成绩" v-model="jiankangdangan.lidingtiaoyuan" clearable />
                         </el-form-item>
                         <el-form-item label="一百米 成绩">
-                            <el-input placeholder="请输入一百米 成绩" v-model="jiankangdangan.yibaimi" clearable />
+                            <el-input placeholder="请输入一百米 成绩" v-model="jiankangdangan.yangwoqizuo" clearable />
                         </el-form-item>
                         <el-form-item label="校园医疗用户">
                             <el-input placeholder="请输入校园医疗用户" v-model="jiankangdangan.xyyiliaoyh" clearable />
@@ -103,8 +103,8 @@
         var _this = this
 
         this.axios.post("/xyyiliaoyhUpdateJiankangdanganactJson", _this.jiankangdangan).then(res => {
-          if (res.data.message == '修改健康档案成功') {
-            _this.$toast.success("修改健康档案成功",{
+          if (res.data.message == '修改体测档案成功') {
+            _this.$toast.success("修改体测档案成功",{
               position: "top",
               pauseOnHover: false,
               duration: 2000
@@ -137,192 +137,61 @@
   export default xyyiliaoyhUpdateJiankangdangan
 </script>
 <style scoped>
-    /* 表单外观 - 椭圆背景 */
-    .form {
-        max-width: 600px;
-        margin: 0 auto;
-        background: #fffaf5;
-        padding: 30px 40px;
-        border-radius: 50px; /* 椭圆感 */
-        box-shadow: 0 6px 20px rgba(255, 160, 122, 0.15);
-        border: 1px solid #ffe5d0;
-    }
 
-    /* 标题 */
-    .page-header {
-        font-size: 22px;
-        font-weight: bold;
-        margin-bottom: 20px;
-        text-align: center;
-        color: #ff7f50;
-        letter-spacing: 1px;
-    }
+  .anime-page {
+    padding: 20px;
+  }
+  .anime-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .page-header {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    color: #303133;
+    border-bottom: 1px solid #ebeef5;
+    padding-bottom: 15px;
+  }
+  .form-footer {
+    margin-top: 30px;
+    text-align: right;
+  }
+  .anime-btn {
+    width: 120px;
+  }
+  .avatar-uploader .el-upload {
+    border: 1px dashed #dcdfe6;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
 
-    /* 圆润输入框 */
-    .el-input {
-        border-radius: 25px;
-    }
-    .el-input__inner {
-        border: 2px solid #ffe0c2;
-        height: 40px;
-        transition: all 0.3s ease;
-    }
-    .el-input__inner:focus {
-        border-color: #ffb38a;
-        background-color: #fff9f5;
-        box-shadow: 0 0 6px rgba(255, 160, 122, 0.3);
-    }
-
-    /* 头像上传区 */
-    .avatar-uploader .avatar {
-        width: 110px;
-        height: 110px;
-        border-radius: 50%;
-        display: block;
-    }
-    .avatar-uploader .el-upload {
-        border: 2px dashed #ffd6b0;
-        border-radius: 50%;
-        cursor: pointer;
-        overflow: hidden;
-        width: 110px;
-        height: 110px;
-        background-color: #fff9f5;
-        transition: all 0.3s ease;
-    }
-    .avatar-uploader .el-upload:hover {
-        border-color: #ffb38a;
-        background-color: #fff5ef;
-    }
-
-    /* 十字按钮换成动漫风圆形按钮 */
-    .avatar-uploader-icon {
-        width: 110px;
-        height: 110px;
-        font-size: 32px;
-        background: #ffe7d4;
-        color: #ff8c69;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        transition: all 0.3s ease;
-    }
-    .avatar-uploader-icon:hover {
-        background: #ffd6b0;
-        color: #ff6f61;
-        transform: scale(1.05);
-    }
-    .avatar-uploader-icon input {
-        opacity: 0;
-        position: absolute;
-        width: 110px;
-        height: 110px;
-        cursor: pointer;
-    }
-
-    /* 按钮 */
-    .el-button {
-        border-radius: 25px;
-        font-weight: bold;
-        padding: 0 25px;
-        transition: all 0.3s ease;
-    }
-    .el-button--primary {
-        background-color: #ffb38a;
-        border-color: #ffb38a;
-    }
-    .el-button--primary:hover {
-        background-color: #ff9e6e;
-        border-color: #ff9e6e;
-    }
-    .el-button--default {
-        background-color: #fff0e6;
-        border: none;
-        color: #ff8c69;
-    }
-    .el-button--default:hover {
-        background-color: #ffe2cf;
-    }
-    .file-uploader {
-        border: 2px dashed #ffd6b0;
-        border-radius: 12px;
-        cursor: pointer;
-        background: #fff9f5;
-        transition: all 0.3s ease;
-        width: 260px;
-        height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .file-uploader:hover {
-        border-color: #ffb38a;
-        background-color: #fff5ef;
-    }
-
-    .file-uploader-placeholder {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #ff8c69;
-        font-size: 14px;
-    }
-
-    .file-link {
-        color: #ff7f50;
-        text-decoration: underline;
-        font-size: 14px;
-    }
-    .file-link:hover {
-        color: #ff6f61;
-    }
-
-    .change-hint {
-        color: #aaa;
-        font-size: 12px;
-        margin-left: 5px;
-    }
-    .img-uploader {
-        border: 2px dashed #ffd6b0;
-        border-radius: 12px;
-        cursor: pointer;
-        background: #fff9f5;
-        transition: all 0.3s ease;
-        min-width: 200px;
-        min-height: 130px;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .img-uploader:hover {
-        border-color: #ffb38a;
-        background-color: #fff5ef;
-    }
-
-    .img-uploader-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #ff8c69;
-        font-size: 14px;
-        flex-direction: column;
-    }
-
-    .preview-img {
-        max-width: 185px;
-        max-height: 100px;
-        border-radius: 8px;
-        margin-bottom: 4px;
-    }
-
-    .change-hint {
-        color: #aaa;
-        font-size: 12px;
-    }
 </style>
 
 

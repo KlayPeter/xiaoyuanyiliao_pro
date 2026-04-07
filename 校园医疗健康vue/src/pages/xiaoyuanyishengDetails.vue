@@ -46,7 +46,7 @@
   export default xiaoyuanyishengDetails
 </script>
 <style scoped lang="scss">
-  @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+  
   .anime-detail-container {
     max-width: 800px;
     margin: 40px auto 0 auto;
@@ -54,7 +54,7 @@
     border-radius: 24px;
     box-shadow: 0 8px 32px rgba(107, 115, 255, 0.10);
     padding: 40px 32px 32px 32px;
-    font-family: 'ZCOOL KuaiLe', 'Smiley Sans', '微软雅黑', sans-serif;
+    
   }
   .gonggao-header {
     display: flex;
@@ -63,8 +63,8 @@
     margin-bottom: 18px;
     .gonggao-title {
       font-size: 28px;
-      color: #6B73FF;
-      font-family: 'ZCOOL KuaiLe', cursive;
+      color: #409EFF;
+      
       margin-bottom: 8px;
       letter-spacing: 2px;
     }

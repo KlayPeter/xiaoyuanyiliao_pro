@@ -80,12 +80,12 @@
     .article-author {
         font-size: 28rpx;
         font-weight: 600;
-        color: #333;
+        color: #0f172a;
     }
 
     .article-text {
         font-size: 26rpx;
-        color: #666;
+        color: #64748b;
         margin-top: 25rpx;
         line-height: 1.5;
 		min-height: 30vh;
@@ -93,7 +93,7 @@
 
     .article-time {
         font-size: 24rpx;
-        color: #999;
+        color: #94a3b8;
         margin-top: 10rpx;
         text-align: right;
     }

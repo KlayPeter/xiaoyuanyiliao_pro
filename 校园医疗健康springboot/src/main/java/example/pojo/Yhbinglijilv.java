@@ -24,6 +24,51 @@ public class Yhbinglijilv {
     private String xyyiliaoyh;
 
     private Integer xyyiliaoyhid;
+    private String jiwangshi;
+
+    public String getJiwangshi() { return jiwangshi; }
+    public void setJiwangshi(String jiwangshi) { this.jiwangshi = jiwangshi; }
+    private String xingbie;
+
+    public String getXingbie() { return xingbie; }
+    public void setXingbie(String xingbie) { this.xingbie = xingbie; }
+    private String nianling;
+
+    public String getNianling() { return nianling; }
+    public void setNianling(String nianling) { this.nianling = nianling; }
+    private String xuehao;
+
+    public String getXuehao() { return xuehao; }
+    public void setXuehao(String xuehao) { this.xuehao = xuehao; }
+    private String lianxidianhua;
+
+    public String getLianxidianhua() { return lianxidianhua; }
+    public void setLianxidianhua(String lianxidianhua) { this.lianxidianhua = lianxidianhua; }
+    private String guominshi;
+
+    public String getGuominshi() { return guominshi; }
+    public void setGuominshi(String guominshi) { this.guominshi = guominshi; }
+    private String state;
+
+    public String getState() { return state; }
+    public void setState(String state) { this.state = state; }
+    private Double zhifujine;
+
+    public Double getZhifujine() { return zhifujine; }
+    public void setZhifujine(Double zhifujine) { this.zhifujine = zhifujine; }
+    private String zhifupingzheng;
+
+    public String getZhifupingzheng() { return zhifupingzheng; }
+    public void setZhifupingzheng(String zhifupingzheng) { this.zhifupingzheng = zhifupingzheng; }
+
+
+
+
+
+
+
+
+
 
     public Integer getId() {
         return id;

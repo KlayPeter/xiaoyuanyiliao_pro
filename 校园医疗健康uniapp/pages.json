@@ -1,22 +1,24 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		//定义首页
+	"pages": [ 
 		{
 			"path": "pages/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "首页",
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/login",
 			"style": {
-				"navigationBarTitleText": "登录"
+				"navigationBarTitleText": "登录",
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/register",
 			"style": {
-				"navigationBarTitleText": "注册"
+				"navigationBarTitleText": "注册",
+				"navigationStyle": "custom"
 			}
 		},
 				{
@@ -152,6 +154,12 @@
 							}
 						},
 						{
+							"path": "pages/xyyiliaoyhYhbinglijilvDetails",
+							"style": {
+								"navigationBarTitleText": "病历记录详细及支付"
+							}
+						},
+						{
 							"path": "pages/xyyiliaoyhYhbinglijilvList",
 							"style": {
 								"navigationBarTitleText": "用户病例记录列表"
@@ -196,25 +204,26 @@
 						{
 							"path": "pages/xyyiliaoyhAddJiankangdangan",
 							"style": {
-								"navigationBarTitleText": "添加健康档案"
+								"navigationBarTitleText": "添加体测档案"
 							}
 						},
 						{
 							"path": "pages/xyyiliaoyhUpdateJiankangdangan",
 							"style": {
-								"navigationBarTitleText": "健康档案详细"
+								"navigationBarTitleText": "体测档案详细"
 							}
 						},
 						{
 							"path": "pages/xyyiliaoyhJiankangdanganList",
 							"style": {
-								"navigationBarTitleText": "健康档案列表"
+								"navigationBarTitleText": "体测档案列表"
 							}
 						},
 				{
 					"path": "pages/searchXiaoyuanyisheng",
 					"style": {
-						"navigationBarTitleText": "搜索校园医生"
+						"navigationBarTitleText": "搜索校园医生",
+						"navigationStyle": "custom"
 					}
 				},
 				{
@@ -226,7 +235,8 @@
 				{
 					"path": "pages/searchXytijianshixiang",
 					"style": {
-						"navigationBarTitleText": "搜索校园体检事项"
+						"navigationBarTitleText": "搜索校园体检事项",
+						"navigationStyle": "custom"
 					}
 				},
 				{
@@ -238,7 +248,8 @@
 				{
 					"path": "pages/searchXyggao",
 					"style": {
-						"navigationBarTitleText": "搜索校园公告"
+						"navigationBarTitleText": "搜索校园公告",
+						"navigationStyle": "custom"
 					}
 				},
 				{
@@ -250,7 +261,8 @@
 		{
 			"path": "pages/htMenu",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "我的",
+				"navigationStyle": "custom"
 			}
 		},
 		{
@@ -270,44 +282,44 @@
 
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "white",
+		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "",
-		"navigationBarBackgroundColor": "#55aa7f",
-		"backgroundColor": "#FFFFFF"
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#f8fafc"
 	},
 	"tabBar": {
-		"color": "#696969",
-		"selectedColor": "#f03d37",
-		"borderStyle": "black",
+		"color": "#94a3b8",
+		"selectedColor": "#2563eb",
+		"borderStyle": "white",
 		"backgroundColor": "#ffffff",
 		"list": [{
 			"pagePath": "pages/index",
-			"iconPath": "static/首页.png",
-			"selectedIconPath": "static/首页.png",
+			"iconPath": "static/ic_home.png",
+			"selectedIconPath": "static/ic_home_active.png",
 			"text": "首页"
 		},
 				{
 					"pagePath": "pages/searchXiaoyuanyisheng",
-					"iconPath": "static/搜索.png",
-					"selectedIconPath": "static/搜索.png",
+					"iconPath": "static/ic_doctor.png",
+					"selectedIconPath": "static/ic_doctor_active.png",
 					"text": "校园医生"
 				},
 				{
 					"pagePath": "pages/searchXytijianshixiang",
-					"iconPath": "static/搜索.png",
-					"selectedIconPath": "static/搜索.png",
+					"iconPath": "static/ic_checkup.png",
+					"selectedIconPath": "static/ic_checkup_active.png",
 					"text": "校园体检事项"
 				},
 				{
 					"pagePath": "pages/searchXyggao",
-					"iconPath": "static/搜索.png",
-					"selectedIconPath": "static/搜索.png",
+					"iconPath": "static/ic_announce.png",
+					"selectedIconPath": "static/ic_announce_active.png",
 					"text": "校园公告"
 				},
 		{
 			"pagePath": "pages/htMenu",
-			"iconPath": "static/个人.png",
-			"selectedIconPath": "static/个人.png",
+			"iconPath": "static/ic_user.png",
+			"selectedIconPath": "static/ic_user_active.png",
 			"text": "我的"
 		}]
 	}

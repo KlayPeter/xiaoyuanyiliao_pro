@@ -9,7 +9,7 @@
 			<view class="liebiao-item" v-for="item in xytijianshixiangs" :key="item.id"
 				@click="xytijianshixiangDetails(item.id)">
 				<view class="liebiao-item-com1">
-					<image :src="'http://127.0.0.1:8080/xiaoyuanyiliaojiankang/static/upload/'+item.tijianimg" class="img"></image>
+					<image :src="item.tijianimg ? 'http://127.0.0.1:8080/xiaoyuanyiliaojiankang/static/upload/'+item.tijianimg : '../static/medical_checkup.png'" @error="item.tijianimg = null" class="img"></image>
 				</view>
 				<view class="liebiao-item-com2">
 					<view class="title">{{item.tijiant}}</view>
@@ -78,13 +78,22 @@
 
 <style>
 	page {
-		background-color: #f5f5f5;
+		background: #f8fafc url('/static/real_medical_bg.png') center/cover fixed no-repeat;
+		min-height: 100vh;
 	}
 
 	.liebiao .liebiao-item {
-		border-bottom: 1px solid #e6e6e6;
-		padding: 10px;
-		height: 100px;
+		border-bottom: none;
+		padding: 20rpx;
+		height: auto;
+		min-height: 100px;
+		background: #ffffff;
+		border-radius: 24rpx;
+		margin: 0 20rpx 16rpx 20rpx;
+		box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.03);
+		border: 1px solid #f1f5f9;
+		display: flex;
+		align-items: center;
 	}
 
 	.liebiao .liebiao-item .liebiao-item-com1 {
@@ -100,7 +109,7 @@
 
 	.liebiao .xiaowenzi {
 		font-size: 13px;
-		color: #666;
+		color: #64748b;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -117,27 +126,31 @@
 	}
 
 	.liebiao .btn {
-		width: 47px;
-		height: 27px;
-		line-height: 28px;
+		width: auto;
+		padding: 6rpx 24rpx;
+		height: 56rpx;
+		line-height: 56rpx;
 		text-align: center;
 		box-sizing: border-box;
-		background-color: #55aa7f;
+		background: #2563eb;
 		color: #fff;
-		border-radius: 4px;
+		border-radius: 100rpx;
 		white-space: nowrap;
-		font-size: 12px;
-		cursor: pointer;
+		font-size: 24rpx;
+		font-weight: 600;
+		box-shadow: 0 4rpx 12rpx rgba(37, 99, 235, 0.2);
 	}
 
 	.liebiao .liebiao-item .liebiao-item-com1 .img {
 		width: 100%;
 		height: 100px;
+		border-radius: 16rpx;
+		object-fit: cover;
 	}
 
 	.liebiao .liebiao-item .title {
 		font-size: 17px;
-		color: #333;
+		color: #0f172a;
 		font-weight: 700;
 		padding-right: 5px;
 		flex-shrink: 1;
@@ -145,7 +158,7 @@
 
 	.liebiao .pingfen {
 		font-weight: 700;
-		color: #faaf00;
+		color: #d97706;
 		font-size: 15px;
 		display: inline-block;
 	}

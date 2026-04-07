@@ -9,7 +9,7 @@
           :class="{'message-right': message.isCurrentUser, 'message-left': !message.isCurrentUser}"
       >
         <div class="message-header">
-          <img :src="'http://localhost:8080/xiaoyuanyiliaojiankang/static/upload/'+message.duihuauserimg" alt="头像" class="message-avatar"/>
+          <img :src="message.duihuauserimg && message.duihuauserimg.includes('http') ? message.duihuauserimg : 'http://localhost:8080/xiaoyuanyiliaojiankang/static/upload/' + message.duihuauserimg" alt="头像" class="message-avatar"/>
           <div class="message-author">
             <strong>{{ message.duihuauser }}</strong>
             <span class="message-time">{{ message.duihuauseraddtime }}</span>

@@ -18,6 +18,16 @@ public class Xyyiliaoyh {
     private String xyyiliaoyhimg;
 
     private String college;
+    private String xuehao;
+
+    public String getXuehao() { return xuehao; }
+    public void setXuehao(String xuehao) { this.xuehao = xuehao; }
+    private String guominshi;
+
+    public String getGuominshi() { return guominshi; }
+    public void setGuominshi(String guominshi) { this.guominshi = guominshi; }
+
+
 
     public Integer getId() {
         return id;

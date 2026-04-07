@@ -67,18 +67,16 @@
   export default qtMenu
 </script>
 <style scoped lang="scss">
-  @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
   .anime-layout {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    font-family: 'ZCOOL KuaiLe', 'Smiley Sans', '微软雅黑', sans-serif;
-    background: linear-gradient(135deg, #f5e6ff 0%, #d0e6ff 100%);
+    background-color: #f5f7fa;
   }
 
   .anime-header {
-    background: linear-gradient(90deg, #ffb6b9 0%, #6B73FF 100%);
-    box-shadow: 0 2px 12px 0 rgba(107, 115, 255, 0.08);
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     position: fixed;
     width: 100%;
     top: 0;
@@ -97,42 +95,30 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
 
       img {
         height: 40px;
-        border-radius: 50%;
-        background: #fff;
-        box-shadow: 0 2px 8px #ffb6b9;
-        margin-right: 8px;
+        margin-right: 12px;
       }
 
       span {
-        font-size: 26px;
-        font-weight: bold;
-        color: #fff;
-        letter-spacing: 2px;
-        font-family: 'ZCOOL KuaiLe', cursive;
-        text-shadow: 0 2px 8px #6B73FF44;
+        font-size: 22px;
+        font-weight: 600;
+        color: #303133;
       }
     }
 
     .nav-menu {
       border-bottom: none;
       margin: 0 20px;
-      background: transparent;
-
+      
       .el-menu-item {
-        font-size: 18px;
-        font-family: 'ZCOOL KuaiLe', cursive;
-        color: #fff;
-        border-radius: 16px;
-        margin: 0 8px;
-        transition: background 0.2s;
-
+        font-size: 16px;
+        color: #606266;
+        
         &:hover, &.is-active {
-          background: #fff;
-          color: #6B73FF;
+          color: #409EFF;
+          background-color: transparent;
         }
       }
     }
@@ -140,21 +126,15 @@
     .user-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
-
-      .el-button {
-        border-radius: 20px;
-        font-family: 'ZCOOL KuaiLe', cursive;
-        font-size: 16px;
-      }
+      gap: 12px;
 
       a {
-        color: #fff;
-        font-weight: bold;
-        margin-left: 8px;
+        color: #409EFF;
+        font-weight: 500;
+        text-decoration: none;
 
         &:hover {
-          color: #ffb6b9;
+          color: #66b1ff;
         }
       }
     }
@@ -162,20 +142,17 @@
 
   .main-content {
     flex: 1;
-    margin-top: 70px;
+    margin-top: 60px;
     padding: 24px 0 0 0;
     min-height: 80vh;
-    background: url('/src/assets/qt/images/200.png') no-repeat right bottom;
-    background-size: 300px auto;
   }
 
   .copyright {
     text-align: center;
+    padding: 24px 0;
+    color: #909399;
+    font-size: 14px;
+    background-color: #ffffff;
     margin-top: 40px;
-    padding: 24px 0 12px 0;
-    color: #6B73FF;
-    font-size: 15px;
-    letter-spacing: 1px;
-    font-family: 'ZCOOL KuaiLe', cursive;
   }
 </style>

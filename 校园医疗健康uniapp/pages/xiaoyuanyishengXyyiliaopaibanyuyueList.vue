@@ -139,11 +139,11 @@
 
 <style>
 	page {
-		background-color: #f5f5f5;
+		background-color: #f8fafc;
 	}
 
 	.liebiao .liebiao-item {
-		border-bottom: 1px solid #e6e6e6;
+		border-bottom: 1px solid #e2e8f0;
 		padding: 10px;
 		height: 110px;
 	}
@@ -161,7 +161,7 @@
 
 	.liebiao .xiaowenzi {
 		font-size: 13px;
-		color: #666;
+		color: #64748b;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -183,9 +183,9 @@
 		line-height: 28px;
 		text-align: center;
 		box-sizing: border-box;
-		background-color: #55aa7f;
+		background: linear-gradient(135deg, #0e7490, #0284c7);
 		color: #fff;
-		border-radius: 4px;
+		border-radius: 100rpx;
 		white-space: nowrap;
 		font-size: 12px;
 		cursor: pointer;
@@ -199,7 +199,7 @@
 
 	.liebiao .liebiao-item .title {
 		font-size: 17px;
-		color: #333;
+		color: #0f172a;
 		font-weight: 700;
 		padding-right: 5px;
 		flex-shrink: 1;

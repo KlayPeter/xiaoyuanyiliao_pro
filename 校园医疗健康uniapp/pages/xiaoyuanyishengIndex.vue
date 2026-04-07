@@ -101,11 +101,11 @@
 
 <style>
 	page {
-		background-color: #f8f8f8;
+		background-color: #f8fafc;
 	}
 
 	.input {
-		border-bottom: 1px solid #d6d6d6;
+		border-bottom: 1px solid #e2e8f0;
 		padding: 10px;
 		margin: 5px 10px;
 	}
@@ -118,7 +118,7 @@
 
 	.biaodanbtn {
 		color: #FFFFFF;
-		background-color: #55aa7f;
+		background: linear-gradient(135deg, #0e7490, #0284c7);
 		margin: 15px;
 	}
 

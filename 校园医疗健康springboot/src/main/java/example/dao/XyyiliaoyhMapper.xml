@@ -11,6 +11,8 @@
     <result column="xyyiliaoyhphone" jdbcType="VARCHAR" property="xyyiliaoyhphone" />
     <result column="xyyiliaoyhimg" jdbcType="VARCHAR" property="xyyiliaoyhimg" />
     <result column="college" jdbcType="VARCHAR" property="college" />
+    <result column="xuehao" jdbcType="VARCHAR" property="xuehao" />
+    <result column="guominshi" jdbcType="VARCHAR" property="guominshi" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, username, password, xyyiliaoyhname, xyyiliaoyhsex, xyyiliaoyhage, xyyiliaoyhphone, 
-    xyyiliaoyhimg, college
+    xyyiliaoyhimg, college, xuehao, guominshi
   </sql>
   <select id="selectByExample" parameterType="example.pojo.XyyiliaoyhExample" resultMap="BaseResultMap">
     select
@@ -144,6 +146,12 @@
       <if test="college != null">
         college,
       </if>
+      <if test="xuehao != null">
+        xuehao,
+      </if>
+      <if test="guominshi != null">
+        guominshi,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -172,6 +180,12 @@
       </if>
       <if test="college != null">
         #{college,jdbcType=VARCHAR},
+      </if>
+      <if test="xuehao != null">
+        #{xuehao,jdbcType=VARCHAR},
+      </if>
+      <if test="guominshi != null">
+        #{guominshi,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -257,6 +271,12 @@
       </if>
       <if test="college != null">
         college = #{college,jdbcType=VARCHAR},
+      </if>
+      <if test="xuehao != null">
+        xuehao = #{xuehao,jdbcType=VARCHAR},
+      </if>
+      <if test="guominshi != null">
+        guominshi = #{guominshi,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

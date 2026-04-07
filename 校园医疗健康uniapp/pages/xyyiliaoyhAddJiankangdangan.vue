@@ -5,22 +5,22 @@
 			<view class="form biaodan">
 						<view style="margin: 10px;">测试时间:</view>
 						<input maxlength="-1" v-model="jiankangdangan.shijian" class="input" placeholder="请输入测试时间" />
-						<view style="margin: 10px;">身高:</view>
-						<input maxlength="-1" v-model="jiankangdangan.height" class="input" placeholder="请输入身高" />
-						<view style="margin: 10px;">体重:</view>
-						<input maxlength="-1" v-model="jiankangdangan.weight" class="input" placeholder="请输入体重" />
+						<view style="margin: 10px;">身高(cm):</view>
+						<input maxlength="-1" v-model="jiankangdangan.height" class="input" placeholder="请输入身高(cm)" />
+						<view style="margin: 10px;">体重(kg):</view>
+						<input maxlength="-1" v-model="jiankangdangan.weight" class="input" placeholder="请输入体重(kg)" />
 						<view style="margin: 10px;">bmi数值:</view>
 						<input maxlength="-1" v-model="jiankangdangan.bmi" class="input" placeholder="请输入bmi数值" />
-						<view style="margin: 10px;">左眼视力:</view>
-						<input maxlength="-1" v-model="jiankangdangan.zuoyanshili" class="input" placeholder="请输入左眼视力" />
-						<view style="margin: 10px;">右眼视力:</view>
-						<input maxlength="-1" v-model="jiankangdangan.youyanshili" class="input" placeholder="请输入右眼视力" />
-						<view style="margin: 10px;">肺活量:</view>
-						<input maxlength="-1" v-model="jiankangdangan.feihuoliang" class="input" placeholder="请输入肺活量" />
-						<view style="margin: 10px;">立定跳远成绩:</view>
-						<input maxlength="-1" v-model="jiankangdangan.lidingtiaoyuan" class="input" placeholder="请输入立定跳远成绩" />
+						<view style="margin: 10px;">50m成绩(s):</view>
+						<input maxlength="-1" v-model="jiankangdangan.wushimichengji" class="input" placeholder="请输入50m成绩(s)" />
+						<view style="margin: 10px;">800m成绩(s):</view>
+						<input maxlength="-1" v-model="jiankangdangan.babaimichengji" class="input" placeholder="请输入800m成绩(s)" />
+						<view style="margin: 10px;">肺活量(ml):</view>
+						<input maxlength="-1" v-model="jiankangdangan.feihuoliang" class="input" placeholder="请输入肺活量(ml)" />
+						<view style="margin: 10px;">立定跳远成绩(m)成绩:</view>
+						<input maxlength="-1" v-model="jiankangdangan.lidingtiaoyuan" class="input" placeholder="请输入立定跳远成绩(m)成绩" />
 						<view style="margin: 10px;">一百米 成绩:</view>
-						<input maxlength="-1" v-model="jiankangdangan.yibaimi" class="input" placeholder="请输入一百米 成绩" />
+						<input maxlength="-1" v-model="jiankangdangan.yangwoqizuo" class="input" placeholder="请输入一百米 成绩" />
 						<view style="margin: 10px;">校园医疗用户:</view>
 						<input maxlength="-1" v-model="jiankangdangan.xyyiliaoyh" class="input" placeholder="请输入校园医疗用户" />
 						<view style="margin: 10px;">校园医疗用户id:</view>
@@ -78,10 +78,10 @@
 					method: "POST",
 					data: _this.jiankangdangan,
 					success(res) {
-						if (res.data.message == "添加健康档案成功") {
+						if (res.data.message == "添加体测档案成功") {
 							uni.showToast({
 								icon: "success",
-								title: "添加健康档案成功",
+								title: "添加体测档案成功",
 								duration: 2000,
 							})
 							return
@@ -116,11 +116,11 @@
 
 <style>
 	page {
-		background-color: #f8f8f8;
+		background-color: #f8fafc;
 	}
 
 	.input {
-		border-bottom: 1px solid #d6d6d6;
+		border-bottom: 1px solid #e2e8f0;
 		padding: 10px;
 		margin: 5px 10px;
 	}
@@ -133,7 +133,7 @@
 
 	.biaodanbtn {
 		color: #FFFFFF;
-		background-color: #55aa7f;
+		background: linear-gradient(135deg, #0e7490, #0284c7);
 		margin: 15px;
 	}
 </style>

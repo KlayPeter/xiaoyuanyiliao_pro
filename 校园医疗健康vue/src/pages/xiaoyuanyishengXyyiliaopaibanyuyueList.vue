@@ -32,7 +32,7 @@
           <el-table-column prop="xiaoyuanyishengimg" label="校园医生照片" min-width="100">
             <template #default="scope">
               <div class="avatar-frame">
-                <img :src="'http://localhost:8080/xiaoyuanyiliaojiankang/static/upload/'+scope.row.xiaoyuanyishengimg" alt="校园医生照片" />
+                <img :src="scope.row.xiaoyuanyishengimg && scope.row.xiaoyuanyishengimg.includes('http') ? scope.row.xiaoyuanyishengimg : 'http://localhost:8080/xiaoyuanyiliaojiankang/static/upload/' + scope.row.xiaoyuanyishengimg" alt="校园医生照片" />
               </div>
             </template>
           </el-table-column>
@@ -41,7 +41,7 @@
           <el-table-column prop="xyyiliaoyhimg" label="校园用户照片" min-width="100">
             <template #default="scope">
               <div class="avatar-frame">
-                <img :src="'http://localhost:8080/xiaoyuanyiliaojiankang/static/upload/'+scope.row.xyyiliaoyhimg" alt="校园用户照片" />
+                <img :src="scope.row.xyyiliaoyhimg && scope.row.xyyiliaoyhimg.includes('http') ? scope.row.xyyiliaoyhimg : 'http://localhost:8080/xiaoyuanyiliaojiankang/static/upload/' + scope.row.xyyiliaoyhimg" alt="校园用户照片" />
               </div>
             </template>
           </el-table-column>
@@ -49,13 +49,13 @@
           <el-table-column prop="typea" label="类型" min-width="100" />
           <el-table-column prop="state" label="状态" min-width="100" />
           <el-table-column prop="addtime" label="创建时间" min-width="100" />
-      <el-table-column fixed="right" label="操作" min-width="120">
+      <el-table-column fixed="right" label="操作" min-width="180">
         <template #default="scope">
-          <el-button v-if="scope.row.state == '待对话'" class="anime-btn" size="small" @click.prevent="jinxduihua(scope.$index)"
+          <el-button v-if="scope.row.state == '待对话'" type="primary" plain size="small" @click.prevent="jinxduihua(scope.$index)"
           >对话</el-button>
-          <el-button v-if="scope.row.state == '待对话'" class="anime-btn" size="small" @click.prevent="jinxingkaifang(scope.$index)"
+          <el-button v-if="scope.row.state == '待对话'" type="primary" plain size="small" @click.prevent="jinxingkaifang(scope.$index)"
           >进行开方</el-button>
-          <el-button v-if="scope.row.state == '已前往'" class="anime-btn" size="small" @click.prevent="jinxingkaifang(scope.$index)"
+          <el-button v-if="scope.row.state == '已前往'" type="primary" plain size="small" @click.prevent="jinxingkaifang(scope.$index)"
           >进行开方</el-button>
         </template>
       </el-table-column>
@@ -203,121 +203,47 @@
   export default xiaoyuanyishengXyyiliaopaibanyuyueList
 </script>
 
+
 <style scoped lang="scss">
   .anime-page {
-    padding: 25px;
-
-    .anime-card-title {
-      font-size: 24px;
-      font-weight: bold;
-      color: #ff7f50;
-      margin-bottom: 15px;
-      text-align: center;
-      letter-spacing: 1px;
-    }
-
-    .search-area {
-      display: flex;
-      margin-bottom: 15px;
-
-      .el-select,
-      .el-date-editor {
-        border-radius: 25px;
-        margin-right: 10px;
-      }
-    }
-
-    .anime-table {
-      border-radius: 25px;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(255, 160, 122, 0.15);
-      background-color: #fffaf5;
-
-      th {
-        background-color: #ffe5d0;
-        color: #ff7f50;
-        font-weight: bold;
-        text-align: center;
-      }
-      td {
-        background-color: #fff9f5;
-        color: #ff6f61;
-        text-align: center;
-      }
-
-      .el-table__row {
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        border-radius: 20px;
-        &:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 4px 12px rgba(255, 160, 122, 0.25);
-        }
-      }
-
-      .avatar-frame img {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        border: 2px solid #ffd6b0;
-        box-shadow: 0 2px 6px rgba(255, 160, 122, 0.2);
-        object-fit: cover;
-      }
-    }
-
-    .anime-btn {
-      border-radius: 20px;
-      background-color: #fff0e6;
-      color: #ff7f50;
-      border: none;
-      padding: 2px 12px;
-      margin: 2px;
-
-      &:hover {
-        background-color: #ffe2cf;
-        color: #ff6f61;
-      }
-    }
-
-    .anime-btn-cancel {
-      border-radius: 20px;
-      background-color: #fffaf5;
-      color: #ff7f50;
-      border: 1px solid #ffe0c2;
-      padding: 2px 12px;
-      margin: 2px;
-
-      &:hover {
-        background-color: #fff5ef;
-        border-color: #ffb38a;
-        color: #ff6f61;
-      }
-    }
-
-    .pagination-area {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-
-      .el-button {
-        border-radius: 20px;
-        font-weight: bold;
-        background-color: #fffaf5;
-        border: 1px solid #ffe0c2;
-        color: #ff7f50;
-        transition: all 0.3s ease;
-
-        &:hover {
-          background-color: #fff5ef;
-          border-color: #ffb38a;
-          color: #ff6f61;
-        }
-
-        &.is-disabled {
-          color: #ccc;
-          border-color: #ffe0c2;
-          background-color: #fffaf5;
-        }
-      }
-    }
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.05);
+    margin: 20px;
+  }
+  .anime-card-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #303133;
+    margin-bottom: 24px;
+    text-align: left;
+    border-bottom: 1px solid #ebeef5;
+    padding-bottom: 15px;
+  }
+  .search-area {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  .search-area .el-input {
+    width: 240px;
+  }
+  .anime-table {
+    border: 1px solid #ebeef5;
+    border-bottom: none;
+  }
+  .avatar-frame img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #ebeef5;
+    object-fit: cover;
+  }
+  .pagination-area {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
   }
 </style>
+

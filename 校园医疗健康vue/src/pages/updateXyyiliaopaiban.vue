@@ -116,192 +116,61 @@
   export default updateXyyiliaopaiban
 </script>
 <style scoped>
-  /* 表单外观 - 椭圆背景 */
+
+  .anime-page {
+    padding: 20px;
+  }
+  .anime-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin: 0 auto;
+  }
   .form {
     max-width: 600px;
     margin: 0 auto;
-    background: #fffaf5;
-    padding: 30px 40px;
-    border-radius: 50px; /* 椭圆感 */
-    box-shadow: 0 6px 20px rgba(255, 160, 122, 0.15);
-    border: 1px solid #ffe5d0;
   }
-
-  /* 标题 */
   .page-header {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #ff7f50;
-    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    color: #303133;
+    border-bottom: 1px solid #ebeef5;
+    padding-bottom: 15px;
   }
-
-  /* 圆润输入框 */
-  .el-input {
-    border-radius: 25px;
+  .form-footer {
+    margin-top: 30px;
+    text-align: right;
   }
-  .el-input__inner {
-    border: 2px solid #ffe0c2;
-    height: 40px;
-    transition: all 0.3s ease;
-  }
-  .el-input__inner:focus {
-    border-color: #ffb38a;
-    background-color: #fff9f5;
-    box-shadow: 0 0 6px rgba(255, 160, 122, 0.3);
-  }
-
-  /* 头像上传区 */
-  .avatar-uploader .avatar {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    display: block;
+  .anime-btn {
+    width: 120px;
   }
   .avatar-uploader .el-upload {
-    border: 2px dashed #ffd6b0;
-    border-radius: 50%;
+    border: 1px dashed #dcdfe6;
+    border-radius: 6px;
     cursor: pointer;
+    position: relative;
     overflow: hidden;
-    width: 110px;
-    height: 110px;
-    background-color: #fff9f5;
-    transition: all 0.3s ease;
   }
   .avatar-uploader .el-upload:hover {
-    border-color: #ffb38a;
-    background-color: #fff5ef;
+    border-color: #409EFF;
   }
-
-  /* 十字按钮换成动漫风圆形按钮 */
   .avatar-uploader-icon {
-    width: 110px;
-    height: 110px;
-    font-size: 32px;
-    background: #ffe7d4;
-    color: #ff8c69;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    transition: all 0.3s ease;
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
   }
-  .avatar-uploader-icon:hover {
-    background: #ffd6b0;
-    color: #ff6f61;
-    transform: scale(1.05);
-  }
-  .avatar-uploader-icon input {
-    opacity: 0;
-    position: absolute;
-    width: 110px;
-    height: 110px;
-    cursor: pointer;
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
   }
 
-  /* 按钮 */
-  .el-button {
-    border-radius: 25px;
-    font-weight: bold;
-    padding: 0 25px;
-    transition: all 0.3s ease;
-  }
-  .el-button--primary {
-    background-color: #ffb38a;
-    border-color: #ffb38a;
-  }
-  .el-button--primary:hover {
-    background-color: #ff9e6e;
-    border-color: #ff9e6e;
-  }
-  .el-button--default {
-    background-color: #fff0e6;
-    border: none;
-    color: #ff8c69;
-  }
-  .el-button--default:hover {
-    background-color: #ffe2cf;
-  }
-  .file-uploader {
-    border: 2px dashed #ffd6b0;
-    border-radius: 12px;
-    cursor: pointer;
-    background: #fff9f5;
-    transition: all 0.3s ease;
-    width: 260px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .file-uploader:hover {
-    border-color: #ffb38a;
-    background-color: #fff5ef;
-  }
-
-  .file-uploader-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ff8c69;
-    font-size: 14px;
-  }
-
-  .file-link {
-    color: #ff7f50;
-    text-decoration: underline;
-    font-size: 14px;
-  }
-  .file-link:hover {
-    color: #ff6f61;
-  }
-
-  .change-hint {
-    color: #aaa;
-    font-size: 12px;
-    margin-left: 5px;
-  }
-  .img-uploader {
-    border: 2px dashed #ffd6b0;
-    border-radius: 12px;
-    cursor: pointer;
-    background: #fff9f5;
-    transition: all 0.3s ease;
-    min-width: 200px;
-    min-height: 130px;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .img-uploader:hover {
-    border-color: #ffb38a;
-    background-color: #fff5ef;
-  }
-
-  .img-uploader-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ff8c69;
-    font-size: 14px;
-    flex-direction: column;
-  }
-
-  .preview-img {
-    max-width: 185px;
-    max-height: 100px;
-    border-radius: 8px;
-    margin-bottom: 4px;
-  }
-
-  .change-hint {
-    color: #aaa;
-    font-size: 12px;
-  }
 </style>
 
 

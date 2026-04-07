@@ -1,14 +1,11 @@
 <template>
-	<view style="height:100vh;background: #55aa7f;">
-		<view class="img-a">
-			<view class="t-b">
-				您好，
-				<br />
-				欢迎使用，校园医疗健康服务平台
-			</view>
+	<view class="page-container">
+		<view class="t-b">
+			<text class="title-main">您好，</text>
+			<text class="title-sub">欢迎使用校园医疗健康服务</text>
 		</view>
 		<view class="login-view">
-			<view class="t-login" style="min-height: 60vh;">
+			<view class="t-login">
 				<form class="cl">
 					<view class="t-a">
 						<text class="txt">账号</text>
@@ -20,30 +17,45 @@
 						<input type="password" name="code" placeholder="请输入您的密码"
 							v-model="loginForm.password" />
 					</view>
+					
+					<view class="t-a" v-if="!isLoginMode">
+						<text class="txt">再次输入密码</text>
+						<input type="password" name="code2" placeholder="请再次输入您的密码"
+							v-model="loginForm.repassword" />
+					</view>
+
 					<view class="t-a">
-						<text class="txt">选择登录角色</text>
-						<picker class="input" style="background-color: #eaeaea;border-radius: 30rpx;" :range="roleArr"
-							@change="changeRole">
-							<view>{{loginForm.role}}</view>
+						<text class="txt">{{ isLoginMode ? '选择登录角色' : '选择注册角色' }}</text>
+						<picker class="input picker-container" :range="roleArr" @change="changeRole">
+							<view class="picker-text">{{loginForm.role}}</view>
 						</picker>
 					</view>
-					<button @tap="loginactJson()">登 录</button>
-					<view class="reg" @tap="urlto('/pages/register')">前 往 注 册</view>
+					
+					<button @tap="submitactJson()">{{ isLoginMode ? '登 录' : '注 册' }}</button>
+					<view class="reg" @tap="toggleMode">{{ isLoginMode ? '没 有 账 号 ？ 前 往 注 册' : '已 有 账 号 ？ 前 往 登 录' }}</view>
 				</form>
 			</view>
 		</view>
+		<pretty-toast ref="toast"></pretty-toast>
 	</view>
 </template>
 
 
 
 <script>
+	import PrettyToast from '@/components/pretty-toast/pretty-toast.vue';
+
 	export default {
+		components: {
+			PrettyToast
+		},
 		data() {
 			return {
+				isLoginMode: true,
 				loginForm: {
 					username: "",
 					password: "",
+					repassword: "",
 					role: "校园用户"
 				},
 				roleArr: [
@@ -52,6 +64,13 @@
 			}
 		},
 		methods: {
+			toggleMode() {
+				this.isLoginMode = !this.isLoginMode;
+				// Reset form on toggle
+				this.loginForm.username = "";
+				this.loginForm.password = "";
+				this.loginForm.repassword = "";
+			},
 			urlto(url) {
 				uni.navigateTo({
 					url: url
@@ -59,6 +78,13 @@
 			},
 			changeRole(e) {
 				this.loginForm.role = this.roleArr[e.detail.value];
+			},
+			submitactJson(e) {
+				if (this.isLoginMode) {
+					this.loginactJson();
+				} else {
+					this.registeractJson();
+				}
 			},
 			loginactJson(e) {
 				let _this = this
@@ -85,10 +111,32 @@
 								url: 'htMenu'
 							});
 						} else {
-							uni.showToast({
-								icon: "none",
-								title: res.data.message
-							})
+							_this.$refs.toast.show({
+								type: 'error',
+								message: res.data.message || '登录失败'
+							});
+						}
+					}
+				})
+			},
+			registeractJson() {
+				let _this = this;
+				uni.request({
+					url: "registeractJson",
+					method: "POST",
+					data: _this.loginForm,
+					success(res) {
+						let message = res.data.message;
+						if (message == '注册成功，请登录') {
+							_this.$refs.toast.show({ type: 'success', message: '注册成功，请登录' });
+							setTimeout(() => {
+								_this.toggleMode();
+							}, 1500)
+						} else {
+							_this.$refs.toast.show({
+								type: 'error',
+								message: message || '注册失败'
+							});
 						}
 					}
 				})
@@ -101,143 +149,140 @@
 </script>
 
 <style>
-	    .input {
-	        border-bottom: 1px solid #d6d6d6;
-	        padding: 10px;
-	        margin: 5px 10px;
-	    }
-	.txt {
+	page {
+		height: 100%;
+		overflow: hidden;
+		background-color: #f8fafc;
+	}
+
+	.page-container {
+		height: 100vh;
+		width: 100vw;
+		background: #f8fafc url('/static/real_medical_bg.png') center/cover fixed no-repeat;
+		position: fixed;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		box-sizing: border-box;
+	}
+
+	.t-b {
+		position: absolute;
+		top: 15vh;
+		left: 60rpx;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.title-main {
+		font-size: 68rpx;
+		color: #0f172a;
+		font-weight: 800;
+		margin-bottom: 16rpx;
+	}
+
+	.title-sub {
 		font-size: 32rpx;
-		font-weight: bold;
-		color: #333333;
-	}
-
-	.img-a {
-		width: 100%;
-		height: 450rpx;
-		background-color: #55aa7f;
-		background-size: 100%;
-	}
-
-	.reg {
-		font-size: 28rpx;
-		color: #fff;
-		height: 90rpx;
-		line-height: 90rpx;
-		border-radius: 50rpx;
-		font-weight: bold;
-		background: #f5f6fa;
-		color: #000000;
-		text-align: center;
-		margin-top: 30rpx;
+		color: #64748b;
+		font-weight: 500;
 	}
 
 	.login-view {
 		width: 100%;
-		position: relative;
-		margin-top: -120rpx;
-		background-color: #ffffff;
-		border-radius: 8% 8% 0% 0;
+		background: rgba(255, 255, 255, 0.85);
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
+		border-radius: 80rpx 80rpx 0 0;
+		box-shadow: 0 -24rpx 80rpx rgba(15, 23, 42, 0.08);
+		border-top: 2rpx solid rgba(255, 255, 255, 0.9);
+		padding-bottom: env(safe-area-inset-bottom);
+		height: 65vh;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		transition: height 0.3s ease;
 	}
 
 	.t-login {
 		width: 600rpx;
 		margin: 0 auto;
-		font-size: 28rpx;
-		padding-top: 80rpx;
+		padding-top: 50rpx;
 	}
 
-	.t-login button {
-		font-size: 28rpx;
-		background: #2796f2;
-		color: #fff;
-		height: 90rpx;
-		line-height: 90rpx;
-		border-radius: 50rpx;
-		font-weight: bold;
+	.t-a {
+		margin-bottom: 30rpx;
 	}
 
-	.t-login input {
-		height: 90rpx;
-		line-height: 90rpx;
-		margin-bottom: 50rpx;
-		border-bottom: 1px solid #e9e9e9;
-		font-size: 28rpx;
-	}
-
-	.t-login .t-a {
-		position: relative;
-	}
-
-	.t-b {
-		text-align: left;
-		font-size: 42rpx;
-		color: #ffffff;
-		padding: 130rpx 0 0 70rpx;
-		font-weight: bold;
-		line-height: 70rpx;
-	}
-
-	.t-login .t-c {
-		position: absolute;
-		right: 22rpx;
-		top: 22rpx;
-		background: #5677fc;
-		color: #fff;
-		font-size: 24rpx;
-		border-radius: 50rpx;
-		height: 50rpx;
-		line-height: 50rpx;
-		padding: 0 25rpx;
-	}
-
-	.t-login .t-d {
-		text-align: center;
-		color: #999;
-		margin: 80rpx 0;
-	}
-
-	.t-login .t-e {
-		text-align: center;
-		width: 250rpx;
-		margin: 80rpx auto 0;
-	}
-
-	.t-login .t-g {
-		float: left;
-		width: 50%;
-	}
-
-	.t-login .t-e image {
-		width: 50rpx;
-		height: 50rpx;
-	}
-
-	.t-login .t-f {
-		text-align: center;
-		margin: 150rpx 0 0 0;
-		color: #666;
-	}
-
-	.t-login .t-f text {
+	.txt {
+		font-size: 30rpx;
+		font-weight: 600;
+		color: #334155;
 		margin-left: 20rpx;
-		color: #aaaaaa;
-		font-size: 27rpx;
+		margin-bottom: 16rpx;
+		display: block;
+		letter-spacing: 1rpx;
+	}
+
+	/* 表单输入框统一风格 */
+	.t-login input, .input {
+		height: 100rpx;
+		line-height: 100rpx;
+		background: rgba(255, 255, 255, 0.9);
+		border: 2rpx solid #e2e8f0;
+		border-radius: 32rpx;
+		padding: 0 40rpx;
+		font-size: 32rpx;
+		color: #0f172a;
+		box-shadow: inset 0 4rpx 8rpx rgba(0,0,0,0.02);
+		margin: 0;
+		font-weight: 500;
+		box-sizing: border-box;
+	}
+
+	.picker-container {
+		display: flex;
+		align-items: center;
+	}
+
+	.picker-text {
+		width: 100%;
+		height: 100%;
 	}
 
 	.t-login .uni-input-placeholder {
-		color: #aeaeae;
+		color: #cbd5e1;
+		font-weight: 400;
 	}
 
-	.cl {
-		zoom: 1;
+	.t-login button {
+		margin-top: 50rpx;
+		font-size: 32rpx;
+		background: #2563eb !important;
+		color: #fff;
+		height: 100rpx;
+		line-height: 100rpx;
+		border-radius: 50rpx;
+		font-weight: 600;
+		border: none;
+		box-shadow: 0 16rpx 32rpx rgba(37, 99, 235, 0.25);
+		letter-spacing: 4rpx;
 	}
 
-	.cl:after {
-		clear: both;
-		display: block;
-		visibility: hidden;
-		height: 0;
-		content: '\20';
+	.reg {
+		font-size: 28rpx;
+		height: 96rpx;
+		line-height: 96rpx;
+		border-radius: 48rpx;
+		font-weight: 600;
+		background: transparent;
+		color: #64748b;
+		text-align: center;
+		margin-top: 20rpx;
 	}
+
+	.cl { clear: both; }
 </style>

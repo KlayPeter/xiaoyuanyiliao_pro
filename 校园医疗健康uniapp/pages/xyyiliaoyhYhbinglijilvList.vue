@@ -18,7 +18,8 @@
 						<view>用药: {{ order.yongyao }}</view>
 					</view>
 					<view class="order-price" style="display: flex;align-items: center;">
-						<button @click="shanchu(index)" type="primary" size="mini">删除</button>
+						<button @click="goDetail(order)" type="primary" size="mini" style="margin-right:10px; background:#1890ff;">查看详情/凭证</button>
+						<button @click="shanchu(index)" type="warn" size="mini" style="background:#ff4d4f;color:#fff;border:none;">删除</button>
 					</view>
 				</view>
 
@@ -62,6 +63,9 @@
 			})
 		},
 		methods: {
+			goDetail(order) {
+				uni.navigateTo({ url: '/pages/xyyiliaoyhYhbinglijilvDetails?id=' + order.id });
+			},
 			shanchu(index) {
 				let item = this.orderList[index]
 				uni.request({
@@ -120,7 +124,7 @@
 		text-align: center;
 		font-size: 16px;
 		padding: 10px;
-		color: #333;
+		color: #0f172a;
 		width: 100rpx;
 	}
 
@@ -150,7 +154,7 @@
 		display: flex;
 		justify-content: space-between;
 		font-size: 14px;
-		color: #666;
+		color: #64748b;
 	}
 
 	.order-status {
@@ -172,6 +176,6 @@
 	.empty {
 		text-align: center;
 		margin-top: 20px;
-		color: #999;
+		color: #94a3b8;
 	}
 </style>

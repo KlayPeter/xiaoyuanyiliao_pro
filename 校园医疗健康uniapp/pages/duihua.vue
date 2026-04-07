@@ -8,7 +8,7 @@
         <image style="width: 72rpx; height: 72rpx; border-radius: 50%; box-shadow: 0 1rpx 4rpx rgba(0,0,0,0.1);" :src="'http://127.0.0.1:8080/xiaoyuanyiliaojiankang/static/upload/'+item.duihuauserimg"></image>
         <view style="margin-left: 20rpx; display: flex; flex-direction: column; max-width: 65vw;">
           <view style="font-size: 20rpx; color: #888; margin-bottom: 6rpx;">{{item.duihuauser}}</view>
-          <view style="background-color: #ffffff; padding: 20rpx 25rpx; border-radius: 18rpx; font-size: 28rpx; color: #333; box-shadow: 0 2rpx 5rpx rgba(0,0,0,0.05);">
+          <view style="background-color: #ffffff; padding: 20rpx 25rpx; border-radius: 18rpx; font-size: 28rpx; color: #0f172a; box-shadow: 0 2rpx 5rpx rgba(0,0,0,0.05);">
             {{item.message}}
           </view>
         </view>
@@ -32,7 +32,7 @@
     <!-- 固定底部输入框 -->
     <view style="position: fixed; bottom: 0; width: 100vw; height: 100rpx; display: flex; align-items: center; background-color: #fff; padding: 0 20rpx; box-shadow: 0 -2rpx 6rpx rgba(0,0,0,0.08);">
       <input v-model="message" placeholder="写消息…" 
-        style="flex: 1; padding: 20rpx 30rpx; background-color: #f0f0f0; border-radius: 50rpx; font-size: 26rpx; color: #333; border: none;" />
+        style="flex: 1; padding: 20rpx 30rpx; background-color: #f0f0f0; border-radius: 50rpx; font-size: 26rpx; color: #0f172a; border: none;" />
       <view @click="fasong()" 
         style="margin-left: 20rpx; padding: 0 35rpx; height: 64rpx; line-height: 64rpx; background: linear-gradient(to right, #66bb6a, #a5d6a7); color: #fff; border-radius: 30rpx; font-size: 28rpx; box-shadow: 0 2rpx 4rpx rgba(0,0,0,0.1);">
         发送
@@ -133,7 +133,7 @@
 <style>
 	.page {
 		width: 100vw;
-		background-color: #f8f8f8;
+		background-color: #f8fafc;
 	}
 
 	.message-item {
@@ -169,7 +169,7 @@
 
 	.message-text {
 		font-size: 16px;
-		color: #333;
+		color: #0f172a;
 		background-color: #f1f1f1;
 		padding: 10rpx;
 		border-radius: 8px;
@@ -194,10 +194,10 @@
 		width: 70vw;
 		height: 50rpx;
 		padding: 10rpx 20rpx;
-		background-color: #f5f5f5;
+		background-color: #f8fafc;
 		border-radius: 25rpx;
 		font-size: 14px;
-		color: #333;
+		color: #0f172a;
 		border: none;
 	}
 

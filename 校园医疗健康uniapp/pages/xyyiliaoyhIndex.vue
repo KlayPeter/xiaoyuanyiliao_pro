@@ -99,25 +99,32 @@
 
 <style>
 	page {
-		background-color: #f8f8f8;
+		background-color: #f8fafc;
 	}
 
 	.input {
-		border-bottom: 1px solid #d6d6d6;
+		border-bottom: 1px solid #e2e8f0;
 		padding: 10px;
 		margin: 5px 10px;
+		color: #0f172a;
 	}
 
 	.form {
 		background-color: #FFFFFF;
 		margin-top: 15px;
 		padding: 0 0px 15px 0px;
+		border-radius: 24rpx;
+		margin-left: 20rpx;
+		margin-right: 20rpx;
+		box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.03);
+		border: 1px solid #f1f5f9;
 	}
 
 	.biaodanbtn {
 		color: #FFFFFF;
-		background-color: #55aa7f;
+		background: linear-gradient(135deg, #0e7490, #0284c7) !important;
 		margin: 15px;
+		box-shadow: 0 8rpx 24rpx rgba(14,116,144,0.25);
 	}
 
 </style>

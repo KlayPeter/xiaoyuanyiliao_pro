@@ -1,32 +1,41 @@
 <template>
     <view class="container">
         <!-- 订单状态筛选 -->
-        <view class="tab-bar">
-            <view v-for="(item, index) in statusList" :key="index"
-                :class="['tab-item', activeStatus === item.value ? 'active' : '']" @click="changeStatus(item.value)">
-                <view style="width: 150rpx">{{ item.label }}</view>
-            </view>
-        </view>
+		<view class="tabs-container">
+			<scroll-view class="tab-bar-scroll" scroll-x :show-scrollbar="false">
+				<view class="tab-bar-wrapper">
+					<view v-for="(item, index) in statusList" :key="index"
+						:class="['tab-item', activeStatus === item.value ? 'active' : '']" @click="changeStatus(item.value)">
+						<text>{{ item.label }}</text>
+					</view>
+				</view>
+			</scroll-view>
+		</view>
 		
         <!-- 订单列表 -->
         <scroll-view class="order-list" scroll-y>
-            <view v-if="orderList.length === 0" class="empty">暂无预约</view>
-            <view v-else v-for="(order, index) in orderList" :key="index" class="order-card">
-                <view  style="padding: 15px;">
-                    <view class="order-header">
-                        <text class="order-id"> {{ order.xytijianshixiang }}</text>
-                        <text class="order-status">{{ order.state }}</text>
-                    </view>
-                    <view class="order-content">
-                        <view>位置: {{ order.address }}</view>
-                        <view>时间: {{ order.shijian }}</view>
-                        <view class="order-price" style="display: flex;align-items: center;">
-                            <button v-if="order.state == '待前往'" @click="qianwang(index)" type="primary" size="mini">前往</button>
-							<button v-if="order.state == '已出成绩'" @click="shanchu(index)" type="primary" size="mini">删除</button>
+            <view v-if="orderList.length === 0" class="empty">
+				<image class="empty-img" src="../static/medical_checkup.png" mode="widthFix" style="width: 300rpx; opacity: 0.5; margin-bottom: 20rpx;"></image>
+				<view>暂无体检预约</view>
+			</view>
+			
+            <view v-else class="list-wrapper">
+				<view v-for="(order, index) in orderList" :key="index" class="order-card">
+					<view class="order-header">
+						<text class="order-id">体检项: {{ order.xytijianshixiang }}</text>
+						<text :class="['order-status', 's-' + order.state]">{{ order.state }}</text>
+					</view>
+					<view class="order-content">
+						<view class="r-row"><text class="r-label">位置</text><text class="r-val">{{ order.address }}</text></view>
+						<view class="r-row"><text class="r-label">时间</text><text class="r-val">{{ order.shijian }}</text></view>
+						<view class="order-price">
+							<button class="btn-primary" v-if="order.state == '待前往'" @click="qianwang(index)">确认前往</button>
+							<button class="btn-danger" v-if="order.state == '已出成绩'" @click="shanchu(index)">删除记录</button>
 						</view>
-                    </view>
-                </view>                
-            </view>
+					</view>
+				</view>
+				<view style="height: 60rpx;"></view>
+			</view>
         </scroll-view>
     </view>
 </template>
@@ -90,7 +99,8 @@
 				minute = minute < 10 ? '0' + minute : minute;
 				second = second < 10 ? '0' + second : second;
 				return year + '-' + month + '-' + day
-			},            qianwang(index){
+			},
+            qianwang(index){
 				let item = this.orderList[index]
 				if(item.shijian > this.getNowTime()){
 					uni.showToast({
@@ -175,79 +185,123 @@
 </script>
 
 <style scoped>
-    .container {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-    }
+	.container {
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		background: #f8fafc url('/static/real_medical_bg.png') center/cover fixed no-repeat;
+	}
 
-    /* 状态栏 */
-    .tab-bar {
-        display: flex;
-        background-color: #fff;
-        overflow-x: scroll;
-        flex-wrap: nowrap;
-        padding: 10px 0;
-        border-bottom: 1px solid #eee;
-    }
+	/* ======== 状态栏优化 ======== */
+	.tabs-container {
+		background: rgba(255, 255, 255, 0.95);
+		backdrop-filter: blur(20px);
+		border-bottom: 2rpx solid rgba(0,0,0,0.05);
+		box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.02);
+		z-index: 10;
+	}
+	.tab-bar-scroll {
+		width: 100%;
+		white-space: nowrap;
+	}
+	::v-deep .tab-bar-scroll ::-webkit-scrollbar {
+		display: none;
+		width: 0 !important;
+		height: 0 !important;
+		-webkit-appearance: none;
+		background: transparent;
+	}
+	.tab-bar-wrapper {
+		display: inline-flex;
+		padding: 0 10rpx;
+	}
+	.tab-item {
+		display: inline-block;
+		padding: 24rpx 32rpx;
+		font-size: 28rpx;
+		color: #64748b;
+		position: relative;
+		font-weight: 500;
+		transition: all 0.2s;
+	}
+	.tab-item.active {
+		color: #2563eb;
+		font-weight: 700;
+	}
+	.tab-item.active::after {
+		content: '';
+		position: absolute;
+		bottom: 4rpx;
+		left: 32rpx;
+		right: 32rpx;
+		height: 6rpx;
+		background: #2563eb;
+		border-radius: 6rpx;
+	}
 
-    .tab-item {
-        flex: 1;
-        text-align: center;
-        font-size: 16px;
-        padding: 10px;
-        color: #333;
-        width: 100rpx;
-    }
+	/* ======== 订单列表优化 ======== */
+	.order-list {
+		flex: 1;
+		overflow: auto;
+	}
+	.list-wrapper {
+		padding: 24rpx;
+	}
 
-    .tab-item.active {
-        color: #007aff;
-        font-weight: bold;
-        width: 100rpx;
-        border-bottom: 2px solid #007aff;
-    }
+	.order-card {
+		background: rgba(255, 255, 255, 0.9);
+		backdrop-filter: blur(24px);
+		margin-bottom: 24rpx;
+		border-radius: 32rpx;
+		box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.04);
+		border: 2rpx solid #ffffff;
+		overflow: hidden;
+	}
 
-    /* 订单列表 */
-    .order-list {
-        flex: 1;
-        overflow: auto;
-        padding: 10px;
-    }
+	.order-header {
+		display: flex;
+		justify-content: space-between;
+		padding: 24rpx 32rpx;
+		background: rgba(248, 250, 252, 0.5);
+		border-bottom: 2rpx dashed #e2e8f0;
+	}
+	.order-id { font-size: 28rpx; color: #0f172a; font-weight: 700; }
+	.order-status { font-size: 26rpx; color: #f59e0b; font-weight: 700; }
+	.order-status.s-已出成绩 { color: #10b981; }
+	.order-status.s-待前往 { color: #3b82f6; }
 
-    .order-card {
-        background: #fff;
-        margin-bottom: 10px;
+	.order-content {
+		padding: 32rpx;
+	}
+	.r-row { display: flex; margin-bottom: 12rpx; font-size: 28rpx; line-height: 1.6; }
+	.r-label { width: 140rpx; color: #94a3b8; }
+	.r-val { flex: 1; color: #0f172a; font-weight: 500; }
 
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+	.order-price {
+		margin-top: 32rpx;
+		display: flex;
+		justify-content: flex-end;
+		gap: 16rpx;
+	}
+	
+	.btn-primary { 
+		background: #2563eb; color: #fff; 
+		border-radius: 100rpx; padding: 0 32rpx; 
+		height: 60rpx; line-height: 60rpx; font-size: 26rpx; margin: 0; font-weight: 600;
+	}
+	.btn-danger {
+		background: #fef2f2; color: #ef4444; border: 2rpx solid #fee2e2;
+		border-radius: 100rpx; padding: 0 32rpx; 
+		height: 60rpx; line-height: 56rpx; font-size: 26rpx; margin: 0; font-weight: 600;
+	}
 
-    .order-header {
-        display: flex;
-        justify-content: space-between;
-        font-size: 14px;
-        color: #666;
-    }
-
-    .order-status {
-        color: #f56c6c;
-    }
-
-    .order-content {
-        margin-top: 5px;
-        font-size: 14px;
-    }
-
-    .order-price {
-        font-size: 16px;
-        color: #ff5722;
-        font-weight: bold;
-        margin-top: 5px;
-    }
-
-    .empty {
-        text-align: center;
-        margin-top: 20px;
-        color: #999;
-    }
+	.empty {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-top: 160rpx;
+		color: #94a3b8;
+		font-weight: 500;
+	}
 </style>

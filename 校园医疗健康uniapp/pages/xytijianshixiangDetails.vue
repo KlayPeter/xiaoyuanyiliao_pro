@@ -4,8 +4,8 @@
 		<!-- 商品图片轮播 -->
 		<swiper class="swiper" indicator-dots autoplay circular>
 			<swiper-item>
-				<image :src="'http://127.0.0.1:8080/xiaoyuanyiliaojiankang/static/upload/'+xytijianshixiang.tijianimg"
-					mode="aspectFill" class="swiper-img"></image>
+				<image :src="xytijianshixiang.tijianimg ? 'http://127.0.0.1:8080/xiaoyuanyiliaojiankang/static/upload/'+xytijianshixiang.tijianimg : '../static/medical_checkup.png'"
+					mode="aspectFill" @error="xytijianshixiang.tijianimg = null" class="swiper-img"></image>
 			</swiper-item>
 		</swiper>
 
@@ -32,7 +32,7 @@
 
 		<!-- 底部购买按钮 -->
 		<view class="bottom-bar">
-			<button @click="jinxingtijianyuyue" class="buy-btn" size="mini">进行体检预约</button>
+			<button @click="jinxingtijianyuyue" class="buy-btn">进行体检预约</button>
 		</view>
 	</view>
 </template>
@@ -92,8 +92,9 @@
 
 <style scoped>
 	.container {
-		background: #f8f8f8;
+		background: #f8fafc url('/static/real_medical_bg.png') center/cover fixed no-repeat;
 		min-height: 100vh;
+		padding-bottom: 140rpx; /* Leave space for bottom bar */
 	}
 
 	.nav {
@@ -127,23 +128,28 @@
 	}
 
 	.info {
-		padding: 20rpx;
+		padding: 30rpx;
 		background: #fff;
+		margin: 20rpx;
+		border-radius: 32rpx;
+		box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.04);
 	}
 
 	.name {
-		font-size: 36rpx;
-		font-weight: bold;
+		font-size: 40rpx;
+		font-weight: 800;
+		color: #0f172a;
 	}
 
 	.price {
-		color: red;
-		font-size: 30rpx;
-		margin-top: 10rpx;
+		color: #ef4444;
+		font-size: 28rpx;
+		margin-top: 16rpx;
+		font-weight: 600;
 	}
 
 	.xytijianshixiangtype {
-		color: #666;
+		color: #64748b;
 		font-size: 24rpx;
 		margin-top: 10rpx;
 	}
@@ -151,8 +157,10 @@
 	.description,
 	.notice {
 		background: #fff;
-		padding: 20rpx;
-		margin-top: 10rpx;
+		padding: 30rpx;
+		margin: 20rpx;
+		border-radius: 32rpx;
+		box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.04);
 	}
 
 	.title {
@@ -161,7 +169,7 @@
 	}
 
 	.content {
-		color: #666;
+		color: #64748b;
 		font-size: 24rpx;
 		margin-top: 10rpx;
 	}
@@ -170,17 +178,25 @@
 		position: fixed;
 		bottom: 0;
 		width: 100%;
-		padding: 5rpx;
-		background: #fff;
+		padding: 20rpx 40rpx calc(20rpx + env(safe-area-inset-bottom));
+		background: rgba(255, 255, 255, 0.9);
+		backdrop-filter: blur(20px);
 		text-align: center;
+		box-sizing: border-box;
+		border-top: 2rpx solid #f1f5f9;
+		z-index: 99;
 	}
 
 	.buy-btn {
-		width: 80%;
-		background: #007aff;
+		width: 100%;
+		background: #2563eb;
 		color: white;
-		font-size: 20rpx;
-		padding: 16rpx;
-		border-radius: 50rpx;
+		font-size: 32rpx;
+		font-weight: 600;
+		height: 88rpx;
+		line-height: 88rpx;
+		border-radius: 100rpx;
+		box-shadow: 0 8rpx 24rpx rgba(37, 99, 235, 0.3);
+		border: none;
 	}
 </style>

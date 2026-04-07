@@ -150,7 +150,7 @@
         text-align: center;
         font-size: 16px;
         padding: 10px;
-        color: #333;
+        color: #0f172a;
         width: 100rpx;
     }
 
@@ -180,7 +180,7 @@
         display: flex;
         justify-content: space-between;
         font-size: 14px;
-        color: #666;
+        color: #64748b;
     }
 
     .order-status {
@@ -202,6 +202,6 @@
     .empty {
         text-align: center;
         margin-top: 20px;
-        color: #999;
+        color: #94a3b8;
     }
 </style>
