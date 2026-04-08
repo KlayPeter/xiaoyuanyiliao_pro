@@ -12,6 +12,11 @@
     <result column="feihuoliang" jdbcType="VARCHAR" property="feihuoliang" />
     <result column="lidingtiaoyuan" jdbcType="VARCHAR" property="lidingtiaoyuan" />
     <result column="yibaimi" jdbcType="VARCHAR" property="yibaimi" />
+    <result column="zongfen" jdbcType="VARCHAR" property="zongfen" />
+    <result column="zuoweitiqianqu" jdbcType="VARCHAR" property="zuoweitiqianqu" />
+    <result column="yintixiangshang" jdbcType="VARCHAR" property="yintixiangshang" />
+    <result column="wushimi" jdbcType="VARCHAR" property="wushimi" />
+    <result column="yiqianmi" jdbcType="VARCHAR" property="yiqianmi" />
     <result column="xyyiliaoyh" jdbcType="VARCHAR" property="xyyiliaoyh" />
     <result column="xyyiliaoyhid" jdbcType="INTEGER" property="xyyiliaoyhid" />
   </resultMap>
@@ -75,7 +80,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, shijian, height, weight, bmi, zuoyanshili, youyanshili, feihuoliang, lidingtiaoyuan, 
-    yibaimi, xyyiliaoyh, xyyiliaoyhid
+    yibaimi, xyyiliaoyh, xyyiliaoyhid, zongfen, zuoweitiqianqu, yintixiangshang, wushimi, yiqianmi
   </sql>
   <select id="selectByExample" parameterType="example.pojo.JiankangdanganExample" resultMap="BaseResultMap">
     select
@@ -116,7 +121,7 @@
     values (#{id,jdbcType=INTEGER}, #{shijian,jdbcType=VARCHAR}, #{height,jdbcType=VARCHAR}, 
       #{weight,jdbcType=VARCHAR}, #{bmi,jdbcType=VARCHAR}, #{zuoyanshili,jdbcType=VARCHAR}, 
       #{youyanshili,jdbcType=VARCHAR}, #{feihuoliang,jdbcType=VARCHAR}, #{lidingtiaoyuan,jdbcType=VARCHAR}, 
-      #{yibaimi,jdbcType=VARCHAR}, #{xyyiliaoyh,jdbcType=VARCHAR}, #{xyyiliaoyhid,jdbcType=INTEGER}
+      #{yibaimi,jdbcType=VARCHAR}, #{xyyiliaoyh,jdbcType=VARCHAR}, #{xyyiliaoyhid,jdbcType=INTEGER}, #{zongfen}, #{zuoweitiqianqu}, #{yintixiangshang}, #{wushimi}, #{yiqianmi}
       )
   </insert>
   <insert id="insertSelective" parameterType="example.pojo.Jiankangdangan">
@@ -316,6 +321,7 @@
       feihuoliang = #{feihuoliang,jdbcType=VARCHAR},
       lidingtiaoyuan = #{lidingtiaoyuan,jdbcType=VARCHAR},
       yibaimi = #{yibaimi,jdbcType=VARCHAR},
+      zongfen = #{zongfen}, zuoweitiqianqu = #{zuoweitiqianqu}, yintixiangshang = #{yintixiangshang}, wushimi = #{wushimi}, yiqianmi = #{yiqianmi},
       xyyiliaoyh = #{xyyiliaoyh,jdbcType=VARCHAR},
       xyyiliaoyhid = #{xyyiliaoyhid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}

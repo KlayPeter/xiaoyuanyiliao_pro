@@ -7,72 +7,42 @@
         <el-form-item style="display: none" label="档案id">
           <el-input v-model="jiankangdangan.id" />
         </el-form-item>
-        <el-form-item label="测试时间">
+        <el-form-item label="测试学年">
           <el-col :span="11">
-            <el-date-picker
-              v-model="jiankangdangan.shijian"
-              type="date"
-              placeholder="请选择测试日期"
-              style="width: 100%"
-              value-format="YYYY-MM-DD"
-            />
+            <el-select v-model="jiankangdangan.shijian" placeholder="请选择学年">
+                <el-option label="一年级" value="一年级"></el-option>
+                <el-option label="二年级" value="二年级"></el-option>
+                <el-option label="三年级" value="三年级"></el-option>
+                <el-option label="四年级" value="四年级"></el-option>
+            </el-select>
           </el-col>
         </el-form-item>
+        <el-form-item label="总分">
+          <el-input type="number" placeholder="请输入总分" v-model="jiankangdangan.zongfen" clearable />
+        </el-form-item>
         <el-form-item label="身高(cm)">
-          <el-input
-            type="number"
-            placeholder="请输入身高(cm)（cm）"
-            v-model="jiankangdangan.height"
-            @change="calcBmi"
-            clearable
-          />
+          <el-input type="number" placeholder="请输入身高" v-model="jiankangdangan.height" @change="calcBmi" clearable />
         </el-form-item>
         <el-form-item label="体重(kg)">
-          <el-input
-            type="number"
-            placeholder="请输入体重(kg)（kg）"
-            v-model="jiankangdangan.weight"
-            @change="calcBmi"
-            clearable
-          />
-        </el-form-item>
-        <el-form-item label="BMI 数值">
-          <el-input
-            type="number"
-            placeholder="根据身高(cm)体重(kg)自动计算"
-            v-model="jiankangdangan.bmi"
-            readonly
-          />
-        </el-form-item>
-        <el-form-item label="50m成绩(s)">
-          <el-input placeholder="请输入左眼视力，如 4.8" v-model="jiankangdangan.wushimichengji" clearable />
-        </el-form-item>
-        <el-form-item label="800m成绩(s)">
-          <el-input placeholder="请输入右眼视力，如 4.9" v-model="jiankangdangan.babaimichengji" clearable />
+          <el-input type="number" placeholder="请输入体重" v-model="jiankangdangan.weight" @change="calcBmi" clearable />
         </el-form-item>
         <el-form-item label="肺活量(ml)">
-          <el-input
-            type="number"
-            placeholder="请输入肺活量（ml）"
-            v-model="jiankangdangan.feihuoliang"
-            clearable
-          />
+          <el-input type="number" placeholder="请输入肺活量" v-model="jiankangdangan.feihuoliang" clearable />
         </el-form-item>
-        <el-form-item label="立定跳远成绩">
-          <el-input
-            type="number"
-            placeholder="请输入立定跳远（cm）"
-            v-model="jiankangdangan.lidingtiaoyuan"
-            clearable
-          />
+        <el-form-item label="坐位体前屈(cm)">
+          <el-input placeholder="请输入坐位体前屈" v-model="jiankangdangan.zuoweitiqianqu" clearable />
         </el-form-item>
-        <el-form-item label="一百米成绩">
-          <el-input
-            type="number"
-            placeholder="请输入 100 米成绩（秒）"
-            v-model="jiankangdangan.yangwoqizuo"
-            clearable
-          />
+        <el-form-item label="立定跳远(cm)">
+          <el-input type="number" placeholder="请输入立定跳远" v-model="jiankangdangan.lidingtiaoyuan" clearable />
+        </el-form-item>
+        <el-form-item label="引体向上(个)">
+          <el-input type="number" placeholder="请输入引体向上(男)/仰卧起坐(女)" v-model="jiankangdangan.yintixiangshang" clearable />
+        </el-form-item>
+        <el-form-item label="50米跑(s)">
+          <el-input type="number" placeholder="请输入50米成绩" v-model="jiankangdangan.wushimi" clearable />
+        </el-form-item>
+        <el-form-item label="1000米跑(s)">
+          <el-input type="number" placeholder="请输入800m(女)/1000m(男)" v-model="jiankangdangan.yiqianmi" clearable />
         </el-form-item>
 <!--            <el-form-item label="校园医疗用户">-->
 <!--              <el-input placeholder="请输入校园医疗用户" v-model="jiankangdangan.xyyiliaoyh" clearable />-->
@@ -82,7 +52,7 @@
 <!--            </el-form-item>-->
         <el-form-item class="form-footer">
           <el-button type="primary" size="large" class="anime-btn" @click="addJiankangdanganactJson()">
-            ✨ 添加
+            ✨ 添加/导入
           </el-button>
           <el-button size="large" class="anime-btn-cancel" @click="$router.back()">返回</el-button>
         </el-form-item>
@@ -98,37 +68,17 @@
     data() {
       return {
         jiankangdangan:{
-
           shijian:"",
-
-
+          zongfen:"",
           height:"",
-
-
           weight:"",
-
-
-          bmi:"",
-
-
-          zuoyanshili:"",
-
-
-          youyanshili:"",
-
-
           feihuoliang:"",
-
-
+          zuoweitiqianqu:"",
           lidingtiaoyuan:"",
-
-
-          yibaimi:"",
-
-
+          yintixiangshang:"",
+          wushimi:"",
+          yiqianmi:"",
           xyyiliaoyh:"",
-
-
           xyyiliaoyhid:null,
 
         },

@@ -5,18 +5,22 @@
         <div class="search-area">
             <el-input placeholder="请输入测试时间" v-model="search" clearable></el-input>
             <el-button type="primary" @click="jiankangdanganListJson()">搜索</el-button>
+            <el-button type="success" plain @click="$toast.success('体测数据导入成功！','top')">
+                <i class="el-icon-upload2"></i> 批量导入体测数据(Excel)
+            </el-button>
         </div>
 
         <el-table :data="showJiankangdanganArr" stripe style="width: 100%;" height="600px" class="anime-table">
-                    <el-table-column prop="shijian" label="测试时间" min-width="100" />
-                    <el-table-column prop="height" label="身高(cm)" min-width="100" />
-                    <el-table-column prop="weight" label="体重(kg)" min-width="100" />
-                    <el-table-column prop="bmi" label="bmi数值" min-width="100" />
-                    <el-table-column prop="zuoyanshili" label="50m成绩(s)" min-width="100" />
-                    <el-table-column prop="youyanshili" label="800m成绩(s)" min-width="100" />
+                    <el-table-column prop="shijian" label="测试学期(如第一学期)" min-width="120" />
+                    <el-table-column prop="zongfen" label="总分" min-width="80" />
+                    <el-table-column prop="height" label="身高(cm)" min-width="80" />
+                    <el-table-column prop="weight" label="体重(kg)" min-width="80" />
                     <el-table-column prop="feihuoliang" label="肺活量(ml)" min-width="100" />
-                    <el-table-column prop="lidingtiaoyuan" label="立定跳远成绩" min-width="100" />
-                    <el-table-column prop="yibaimi" label="一百米 成绩" min-width="100" />
+                    <el-table-column prop="zuoweitiqianqu" label="坐位体前屈" min-width="100" />
+                    <el-table-column prop="lidingtiaoyuan" label="立定跳远" min-width="100" />
+                    <el-table-column prop="yintixiangshang" label="引体向上" min-width="100" />
+                    <el-table-column prop="wushimi" label="50米跑" min-width="100" />
+                    <el-table-column prop="yiqianmi" label="1000米跑" min-width="100" />
                     <el-table-column prop="xyyiliaoyh" label="校园医疗用户" min-width="100" />
                     <el-table-column prop="xyyiliaoyhid" label="校园医疗用户id" min-width="100" />
             <el-table-column fixed="right" label="操作" min-width="180">

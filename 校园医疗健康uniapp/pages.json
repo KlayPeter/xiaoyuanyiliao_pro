@@ -8,6 +8,13 @@
 			}
 		},
 		{
+			"path": "pages/ticeCalendar",
+			"style": {
+				"navigationBarTitleText": "体测日历",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/login",
 			"style": {
 				"navigationBarTitleText": "登录",

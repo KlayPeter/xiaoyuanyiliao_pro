@@ -13,7 +13,11 @@
 						</textarea>
 							<view style="margin: 10px;">选择评价类型:</view>
 							<picker :range="types" @change="changeType">
-								<view class="input">{{yuyuepingjia.type}}</view>
+								<view class="input">{{yuyuepingjia.type || '请选择评价级别'}}</view>
+							</picker>
+                            <view style="margin: 10px;">给医生打分 (满分5分):</view>
+							<picker :range="scores" @change="changeScore">
+								<view class="input" style="color: #f5a623; font-weight:bold;">★ {{yuyuepingjia.pingjiafenshu || '请选择打分'}}</view>
 							</picker>
 						<!-- <view style="margin: 10px;">校园用户:</view>
 						<input maxlength="-1" v-model="yuyuepingjia.xyyiliaoyh" class="input" placeholder="请输入校园用户" />
@@ -44,11 +48,21 @@
 											"中评",
 											"差评"
 							],
+                            scores:[
+                                            "5",
+                                            "4.5",
+                                            "4",
+                                            "3.5",
+                                            "3",
+                                            "2",
+                                            "1"
+                            ],
 				yuyuepingjia: {
 								xyyiliaopaibanyuyue:"",
 								xyyiliaopaibanyuyueid:null,
 								pingcontent:"",
-								type:"",
+								type:"好评",
+                                pingjiafenshu: "5",
 								xyyiliaoyh:"",
 								xyyiliaoyhid:null,
 								pingjiashijian:"",
@@ -61,6 +75,9 @@
 						changeType(event) {
 							this.yuyuepingjia.type = this.types[event.detail.value]
 						},
+                        changeScore(event) {
+                            this.yuyuepingjia.pingjiafenshu = this.scores[event.detail.value]
+                        },
 			getNowTime() {
 				var now = new Date();
 				var year = now.getFullYear(); // 获取年份

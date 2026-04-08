@@ -1,8 +1,18 @@
 <template>
     <view class="container">
-        <view class="banner">
-            <image class="banner-img" :src="'http://127.0.0.1:8080/xiaoyuanyiliaojiankang/static/upload/'+xyggao.xyimg" mode="aspectFill"></image>
-            <view class="banner-title"></view>
+        <view class="banner" v-if="xyggao.xyimg">
+            <image 
+                class="banner-img" 
+                :src="xyggao.xyimg && xyggao.xyimg.startsWith('http') ? xyggao.xyimg : 'http://127.0.0.1:8080/xiaoyuanyiliaojiankang/static/upload/' + xyggao.xyimg" 
+                mode="aspectFill"
+            ></image>
+            <view class="banner-overlay">
+                <view class="banner-tag">📢 校园公告</view>
+            </view>
+        </view>
+        <!-- 无图时显示渐变头部 -->
+        <view class="banner-fallback" v-else>
+            <view class="banner-tag">📢 校园公告</view>
         </view>
         <view class="article-meta">
             <view class="article-author">{{xyggao.xytitle}}</view>
@@ -11,6 +21,7 @@
         </view>
     </view>
 </template>
+
 
 <script>
     export default {
@@ -69,6 +80,39 @@
         z-index: 11;
     }
 
+    .banner-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20rpx 28rpx;
+        background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+        border-radius: 0 0 20rpx 20rpx;
+    }
+
+    .banner-tag {
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        border: 2rpx solid rgba(255,255,255,0.6);
+        color: #fff;
+        font-size: 24rpx;
+        font-weight: 700;
+        padding: 8rpx 20rpx;
+        border-radius: 100rpx;
+        backdrop-filter: blur(8px);
+    }
+
+    /* 无图时的渐变头部 */
+    .banner-fallback {
+        height: 200rpx;
+        border-radius: 20rpx;
+        margin-bottom: 20rpx;
+        background: linear-gradient(135deg, #1e40af, #0891b2);
+        display: flex;
+        align-items: flex-end;
+        padding: 24rpx 28rpx;
+    }
+
     .article-meta {
         background-color: white;
         border-radius: 10rpx;
@@ -84,17 +128,19 @@
     }
 
     .article-text {
-        font-size: 26rpx;
-        color: #64748b;
+        font-size: 28rpx;
+        color: #475569;
         margin-top: 25rpx;
-        line-height: 1.5;
+        line-height: 1.8;
 		min-height: 30vh;
+        white-space: pre-wrap;
     }
 
     .article-time {
         font-size: 24rpx;
         color: #94a3b8;
-        margin-top: 10rpx;
+        margin-top: 20rpx;
         text-align: right;
+        display: block;
     }
 </style>

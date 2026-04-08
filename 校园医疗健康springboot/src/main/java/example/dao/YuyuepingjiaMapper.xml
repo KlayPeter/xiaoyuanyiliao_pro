@@ -12,6 +12,7 @@
     <result column="pingjiashijian" jdbcType="VARCHAR" property="pingjiashijian" />
     <result column="xiaoyuanyisheng" jdbcType="VARCHAR" property="xiaoyuanyisheng" />
     <result column="xiaoyuanyishengid" jdbcType="INTEGER" property="xiaoyuanyishengid" />
+    <result column="pingjiafenshu" jdbcType="VARCHAR" property="pingjiafenshu" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, xyyiliaopaibanyuyue, xyyiliaopaibanyuyueid, pingcontent, type, xyyiliaoyh, xyyiliaoyhid, 
-    pingjiashijian, xiaoyuanyisheng, xiaoyuanyishengid
+    pingjiashijian, xiaoyuanyisheng, xiaoyuanyishengid, pingjiafenshu
   </sql>
   <select id="selectByExample" parameterType="example.pojo.YuyuepingjiaExample" resultMap="BaseResultMap">
     select

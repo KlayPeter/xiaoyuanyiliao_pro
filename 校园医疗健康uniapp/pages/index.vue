@@ -62,6 +62,29 @@
 
 		<view>
 			<view class="fenlei" style="display:flex; justify-content:space-between; align-items:center;">
+				<view class="fenlei-item active">校园公告最新推荐</view>
+				<text style="font-size:12px; color:#94a3b8; margin-right:20rpx;" @click="switchTab('/pages/searchXyggao')">查看更多 ></text>
+			</view>
+			<view class="liebiao">
+				<view class="liebiao-item" v-for="item in xyggaos.slice(0, 3)" @click="xyggaoDetails(item.id)" :key="item.id">
+					<view class="liebiao-item-com1">
+						<image :src="item.xyimg ? 'http://127.0.0.1:8080/xiaoyuanyiliaojiankang/static/upload/'+item.xyimg : '../static/medical_announce.png'" @error="item.xyimg = null" class="img"></image>
+					</view>
+					<view class="liebiao-item-com2">
+						<view class="title">{{item.xytitle}}</view>
+						<view class="xiaowenzi">发布时间:<view class="pingfen">{{item.xyaddtime}}</view>
+						</view>
+						<view class="xiaowenzi">内容：{{item.xycontent}}</view>
+					</view>
+					<view class="liebiao-item-com3">
+						<view class="btn">详细</view>
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<view>
+			<view class="fenlei" style="display:flex; justify-content:space-between; align-items:center;">
 				<view class="fenlei-item active">校园体检事项最新推荐</view>
 				<text style="font-size:12px; color:#94a3b8; margin-right:20rpx;" @click="switchTab('/pages/searchXytijianshixiang')">查看更多 ></text>
 			</view>
@@ -76,28 +99,6 @@
 						<view class="xiaowenzi">时间:<view class="pingfen">{{item.tijiantime}}</view>
 						</view>
 						<view class="xiaowenzi">位置：{{item.tijianadress}}</view>
-					</view>
-					<view class="liebiao-item-com3">
-						<view class="btn">详细</view>
-					</view>
-				</view>
-			</view>
-		</view>
-		<view>
-			<view class="fenlei" style="display:flex; justify-content:space-between; align-items:center;">
-				<view class="fenlei-item active">校园公告最新推荐</view>
-				<text style="font-size:12px; color:#94a3b8; margin-right:20rpx;" @click="switchTab('/pages/searchXyggao')">查看更多 ></text>
-			</view>
-			<view class="liebiao">
-				<view class="liebiao-item" v-for="item in xyggaos.slice(0, 3)" @click="xyggaoDetails(item.id)" :key="item.id">
-					<view class="liebiao-item-com1">
-						<image :src="item.xyimg ? 'http://127.0.0.1:8080/xiaoyuanyiliaojiankang/static/upload/'+item.xyimg : '../static/medical_announce.png'" @error="item.xyimg = null" class="img"></image>
-					</view>
-					<view class="liebiao-item-com2">
-						<view class="title">{{item.xytitle}}</view>
-						<view class="xiaowenzi">发布时间:<view class="pingfen">{{item.xyaddtime}}</view>
-						</view>
-						<view class="xiaowenzi">内容：{{item.xycontent}}</view>
 					</view>
 					<view class="liebiao-item-com3">
 						<view class="btn">详细</view>

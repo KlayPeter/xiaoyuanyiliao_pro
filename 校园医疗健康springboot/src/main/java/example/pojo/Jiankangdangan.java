@@ -25,6 +25,23 @@ public class Jiankangdangan {
 
     private Integer xyyiliaoyhid;
 
+
+    private String zongfen;
+    private String zuoweitiqianqu;
+    private String yintixiangshang;
+    private String wushimi;
+    private String yiqianmi;
+
+    public String getZongfen(){return zongfen;}
+    public void setZongfen(String zongfen){this.zongfen=zongfen;}
+    public String getZuoweitiqianqu(){return zuoweitiqianqu;}
+    public void setZuoweitiqianqu(String zongfen){this.zuoweitiqianqu=zongfen;}
+    public String getYintixiangshang(){return yintixiangshang;}
+    public void setYintixiangshang(String zongfen){this.yintixiangshang=zongfen;}
+    public String getWushimi(){return wushimi;}
+    public void setWushimi(String z){this.wushimi=z;}
+    public String getYiqianmi(){return yiqianmi;}
+    public void setYiqianmi(String z){this.yiqianmi=z;}
     public Integer getId() {
         return id;
     }

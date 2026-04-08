@@ -8,20 +8,20 @@
         </div>
 
         <el-table :data="showXyyiliaoyhArr" stripe style="width: 100%;" height="600px" class="anime-table">
+                    <el-table-column prop="id" label="ID" min-width="60" />
                     <el-table-column prop="username" label="账号" min-width="100" />
-                    <el-table-column prop="password" label="密码" min-width="100" />
-                    <el-table-column prop="xyyiliaoyhname" label="校园用户昵称" min-width="100" />
-                    <el-table-column prop="xyyiliaoyhsex" label="用户性别" min-width="100" />
-                    <el-table-column prop="xyyiliaoyhage" label="用户年龄" min-width="100" />
-                    <el-table-column prop="xyyiliaoyhphone" label="用户电话" min-width="100" />
-                    <el-table-column prop="xyyiliaoyhimg" label="用户照片" min-width="100">
+                    <el-table-column prop="xyyiliaoyhname" label="姓名" min-width="100" />
+                    <el-table-column prop="xyyiliaoyhsex" label="性别" min-width="70" />
+                    <el-table-column prop="xyyiliaoyhage" label="年龄" min-width="70" />
+                    <el-table-column prop="xyyiliaoyhphone" label="联系电话" min-width="120" />
+                    <el-table-column prop="college" label="学院" min-width="120" />
+                    <el-table-column prop="xyyiliaoyhimg" label="头像" min-width="80">
                         <template #default="scope">
                             <div class="avatar-frame">
                                 <img :src="scope.row.xyyiliaoyhimg && scope.row.xyyiliaoyhimg.includes('http') ? scope.row.xyyiliaoyhimg : 'http://localhost:8080/xiaoyuanyiliaojiankang/static/upload/' + scope.row.xyyiliaoyhimg" alt="用户照片" />
                             </div>
                         </template>
                     </el-table-column>
-                    <el-table-column prop="college" label="学院" min-width="100" />
             <el-table-column fixed="right" label="操作" min-width="180">
                 <template #default="scope">
                     <el-button type="primary" plain size="small"

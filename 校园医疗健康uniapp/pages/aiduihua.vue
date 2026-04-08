@@ -43,6 +43,15 @@
 				scrollIntoViewId: ''
 			}
 		},
+		onLoad(options) {
+			if (options.initialMsg) {
+				this.inputMessage = decodeURIComponent(options.initialMsg);
+				// give vue slightly time to render before auto sending
+				setTimeout(() => {
+					this.sendMessage();
+				}, 300);
+			}
+		},
 		methods: {
 			formatMarkdown(md) {
 				if (!md) return '';

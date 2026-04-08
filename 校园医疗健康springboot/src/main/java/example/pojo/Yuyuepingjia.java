@@ -100,4 +100,14 @@ public class Yuyuepingjia {
     public void setXiaoyuanyishengid(Integer xiaoyuanyishengid) {
         this.xiaoyuanyishengid = xiaoyuanyishengid;
     }
+
+    private String pingjiafenshu;
+
+    public String getPingjiafenshu() {
+        return pingjiafenshu;
+    }
+
+    public void setPingjiafenshu(String pingjiafenshu) {
+        this.pingjiafenshu = pingjiafenshu == null ? null : pingjiafenshu.trim();
+    }
 }

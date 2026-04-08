@@ -53,6 +53,26 @@
       <view class="content" v-html="xiaoyuanyisheng.schoolysjianjie || '<div style=\'text-align:center;padding:100rpx 0;color:#94a3b8\'><p style=\'font-size:32rpx;margin-bottom:20rpx\'>⚕️</p><p>医师暂未上传详细履历</p></div>'"></view>
     </view>
 
+    <!-- 用户评价模块 -->
+    <view class="reviews-section glass-card" v-if="yuyuepingjiaArr && yuyuepingjiaArr.length > 0">
+        <view class="sec-title">
+            <text class="decor"></text>
+            <text>患者真实评价 ({{ yuyuepingjiaArr.length }}条)</text>
+        </view>
+        <view class="review-list">
+            <view class="review-item" v-for="(pingjia, index) in yuyuepingjiaArr" :key="index">
+                <view class="review-header">
+                    <text class="user-name">用户: {{ pingjia.xyyiliaoyh || '匿名用户' }}</text>
+                    <text class="review-date">{{ pingjia.pingjiashijian || '' }}</text>
+                </view>
+                <view class="review-stars">
+                    <text style="color:#f5a623; font-weight:bold;">★ {{ pingjia.pingjiafenshu ? parseFloat(pingjia.pingjiafenshu).toFixed(1) : '5.0' }}</text>
+                </view>
+                <view class="review-content">{{ pingjia.pingcontent }}</view>
+            </view>
+        </view>
+    </view>
+
     <!-- 底部购买按钮 -->
     <view class="bottom-bar">
       <button @click="yuyue" class="buy-btn">立即预约该专家</button>
@@ -99,11 +119,10 @@ export default {
 
             uni.request({
                 url: "yuyuepingjiaListJson",
-                success: (res) => {
-                    this.yuyuepingjiaArr = res.data.yuyuepingjias.filter(t => t.xiaoyuanyishengid == this.xiaoyuanyisheng.id);
+                success: (res2) => {
+                    _this.yuyuepingjiaArr = res2.data.yuyuepingjias.filter(t => t.xiaoyuanyishengid == _this.xiaoyuanyisheng.id);
                 }
             })
-;
           }
       })
   },
@@ -242,5 +261,40 @@ export default {
 	line-height: 90rpx;
 	border-radius: 100rpx;
 	box-shadow: 0 8rpx 20rpx rgba(37, 99, 235, 0.3);
+}
+
+.reviews-section {
+    margin: 32rpx;
+    padding: 40rpx;
+}
+.review-item {
+    border-bottom: 2rpx solid #e2e8f0;
+    padding: 24rpx 0;
+}
+.review-item:last-child {
+    border-bottom: none;
+}
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12rpx;
+}
+.user-name {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #334155;
+}
+.review-date {
+    font-size: 24rpx;
+    color: #94a3b8;
+}
+.review-stars {
+    font-size: 26rpx;
+    margin-bottom: 16rpx;
+}
+.review-content {
+    font-size: 28rpx;
+    color: #475569;
+    line-height: 1.5;
 }
 </style>

@@ -11,7 +11,7 @@
       <nav>
         <el-menu
                 v-if="role === '管理员'"
-                :default-active="activeIndex"
+                :default-active="$route.path"
                 class="admin-menu"
                 active-text-color="#409EFF"
                 @select="handleSelect"
@@ -22,7 +22,7 @@
                 <el-icon><component :is="item.icon" /></el-icon>
                 <span>{{ item.title }}</span>
               </template>
-              <el-menu-item v-for="sub in item.children" :key="sub.index" :index="sub.index" @click="sub.logout ? logout() : (sub.to ? $router.push(sub.to) : null)">
+              <el-menu-item v-for="sub in item.children" :key="sub.to || sub.index" :index="sub.to || sub.index" @click="sub.logout ? logout() : (sub.to ? $router.push(sub.to) : null)">
                 <el-icon><component :is="sub.icon" /></el-icon>
                 <span>{{ sub.title }}</span>
               </el-menu-item>
@@ -31,7 +31,7 @@
         </el-menu>
                     <el-menu
                     v-else-if="role === '校园医生'"
-                    :default-active="activeIndex"
+                    :default-active="$route.path"
                     class="admin-menu"
                     active-text-color="#409EFF"
             >
@@ -41,7 +41,7 @@
                     <el-icon><component :is="item.icon" /></el-icon>
                     <span>{{ item.title }}</span>
                   </template>
-                  <el-menu-item v-for="sub in item.children" :key="sub.index" :index="sub.index" @click="sub.logout ? logout() : (sub.to ? $router.push(sub.to) : null)">
+                  <el-menu-item v-for="sub in item.children" :key="sub.to || sub.index" :index="sub.to || sub.index" @click="sub.logout ? logout() : (sub.to ? $router.push(sub.to) : null)">
                     <el-icon><component :is="sub.icon" /></el-icon>
                     <span>{{ sub.title }}</span>
                   </el-menu-item>
@@ -50,7 +50,7 @@
             </el-menu>
             <el-menu
                     v-else-if="role === '校园用户'"
-                    :default-active="activeIndex"
+                    :default-active="$route.path"
                     class="admin-menu"
                     active-text-color="#409EFF"
             >
@@ -60,7 +60,7 @@
                     <el-icon><component :is="item.icon" /></el-icon>
                     <span>{{ item.title }}</span>
                   </template>
-                  <el-menu-item v-for="sub in item.children" :key="sub.index" :index="sub.index" @click="sub.logout ? logout() : (sub.to ? $router.push(sub.to) : null)">
+                  <el-menu-item v-for="sub in item.children" :key="sub.to || sub.index" :index="sub.to || sub.index" @click="sub.logout ? logout() : (sub.to ? $router.push(sub.to) : null)">
                     <el-icon><component :is="sub.icon" /></el-icon>
                     <span>{{ sub.title }}</span>
                   </el-menu-item>

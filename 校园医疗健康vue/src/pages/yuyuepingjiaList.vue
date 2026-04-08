@@ -12,15 +12,18 @@
         </div>
 
         <el-table :data="showYuyuepingjiaArr" stripe style="width: 100%;" height="600px" class="anime-table">
-                    <el-table-column prop="xyyiliaopaibanyuyue" label="医疗排班预约" min-width="100" />
-                    <el-table-column prop="xyyiliaopaibanyuyueid" label="医疗排班预约id" min-width="100" />
-                    <el-table-column prop="pingcontent" label="评价内容" min-width="100" />
-                    <el-table-column prop="type" label="评价类型" min-width="100" />
-                    <el-table-column prop="xyyiliaoyh" label="校园用户" min-width="100" />
-                    <el-table-column prop="xyyiliaoyhid" label="校园用户id" min-width="100" />
-                    <el-table-column prop="pingjiashijian" label="评价时间" min-width="100" />
-                    <el-table-column prop="xiaoyuanyisheng" label="校园医生" min-width="100" />
-                    <el-table-column prop="xiaoyuanyishengid" label="校园医生id" min-width="100" />
+                    <el-table-column prop="id" label="ID" min-width="60" />
+                    <el-table-column prop="xyyiliaoyh" label="学生姓名" min-width="100" />
+                    <el-table-column prop="xyyiliaoyhid" label="学生ID" min-width="80" />
+                    <el-table-column prop="xiaoyuanyisheng" label="评价医生" min-width="100" />
+                    <el-table-column prop="pingjiafenshu" label="评分" min-width="80">
+                        <template #default="scope">
+                            <span style="color:#f59e0b; font-weight:bold;">★ {{ scope.row.pingjiafenshu || '-' }}</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="type" label="评价类型" min-width="90" />
+                    <el-table-column prop="pingcontent" label="评价内容" min-width="160" />
+                    <el-table-column prop="pingjiashijian" label="评价时间" min-width="120" />
             <el-table-column fixed="right" label="操作" min-width="180">
                 <template #default="scope">
                     <el-button type="primary" plain size="small"

@@ -8,29 +8,15 @@
         </div>
 
         <el-table :data="showXyyiliaopaibanyuyueArr" stripe style="width: 100%;" height="600px" class="anime-table">
-                    <el-table-column prop="jianyaowenti" label="简要问题描述" min-width="100" />
-                    <el-table-column prop="xiaoyuanyisheng" label="校园医生" min-width="100" />
-                    <el-table-column prop="xiaoyuanyishengid" label="校园医生id" min-width="100" />
-                    <el-table-column prop="xiaoyuanyishengimg" label="校园医生照片" min-width="100">
-                        <template #default="scope">
-                            <div class="avatar-frame">
-                                <img :src="scope.row.xiaoyuanyishengimg && scope.row.xiaoyuanyishengimg.includes('http') ? scope.row.xiaoyuanyishengimg : 'http://localhost:8080/xiaoyuanyiliaojiankang/static/upload/' + scope.row.xiaoyuanyishengimg" alt="校园医生照片" />
-                            </div>
-                        </template>
-                    </el-table-column>
-                    <el-table-column prop="xyyiliaoyh" label="校园用户" min-width="100" />
-                    <el-table-column prop="xyyiliaoyhid" label="校园用户id" min-width="100" />
-                    <el-table-column prop="xyyiliaoyhimg" label="校园用户照片" min-width="100">
-                        <template #default="scope">
-                            <div class="avatar-frame">
-                                <img :src="scope.row.xyyiliaoyhimg && scope.row.xyyiliaoyhimg.includes('http') ? scope.row.xyyiliaoyhimg : 'http://localhost:8080/xiaoyuanyiliaojiankang/static/upload/' + scope.row.xyyiliaoyhimg" alt="校园用户照片" />
-                            </div>
-                        </template>
-                    </el-table-column>
+                    <el-table-column prop="id" label="ID" min-width="60" />
+                    <el-table-column prop="xyyiliaoyh" label="学生姓名" min-width="100" />
+                    <el-table-column prop="xyyiliaoyhid" label="学生ID" min-width="80" />
+                    <el-table-column prop="xiaoyuanyisheng" label="就诊医生" min-width="100" />
+                    <el-table-column prop="jianyaowenti" label="主诉症状" min-width="140" />
                     <el-table-column prop="yuyuetime" label="预约日期" min-width="100" />
-                    <el-table-column prop="typea" label="类型" min-width="100" />
-                    <el-table-column prop="state" label="状态" min-width="100" />
-                    <el-table-column prop="addtime" label="创建时间" min-width="100" />
+                    <el-table-column prop="typea" label="类型" min-width="90" />
+                    <el-table-column prop="state" label="状态" min-width="90" />
+                    <el-table-column prop="addtime" label="创建时间" min-width="120" />
             <el-table-column fixed="right" label="操作" min-width="180">
                 <template #default="scope">
                     <el-button type="primary" plain size="small"
